@@ -1,0 +1,104 @@
+.header {
+    width: auto;
+    height: 875px;
+    background-image: url("https://images.unsplash.com/photo-1510710602277-4d7ed841892c?auto=format&fit=crop&w=1350&q=80");
+    background-size: cover;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+        
+.name-box {
+    text-align: center;
+    font-size: 17pt;
+    padding-top: 80px;
+    height: 10px;
+    color: #efefef;
+    font-family: "Georgia", serif;
+}
+        
+.email-box {
+    text-align: center;
+    font-size: 16pt;
+    padding-top: 38px;
+    height: 10px;
+    color: #efefef;
+    font-family: "Georgia", serif;
+}
+        
+.number-box {
+    text-align: center;
+    font-size: 19pt;
+    padding-top: 38px;
+    height: 10px;
+    color: #efefef;
+}
+        
+.p1-box {
+    text-align: center;
+    font-size: 23pt;
+    padding-top: 39px;
+    height: 10px;
+    color: #efefef;
+    font-family: "Georgia", serif;
+}
+        
+.input-box {
+    text-align: center;
+    font-size: 16pt;
+    padding-top: 70px;
+    height: 10px;
+    color: #efefef;
+    font-family: "Georgia", serif;
+}
+        
+form {
+    text-align: center;
+    margin-top: 100px;
+}
+        
+.input-mail-box {
+    text-align: center;
+    background-color: white;
+    width: 270px;
+    height: 178px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.5);
+    border-radius: 9px;
+}
+        
+.submit {
+    background-color: #3fb6b2;
+    padding: 7px 55px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    margin: 0;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.submit:hover {
+    background-color: #43a09d;
+}
+        
+.fname {
+    width: 225px;
+    height: 22px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    margin-top: 21px;
+}
+        
+.fmail {
+    width: 225px;
+    height: 22px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+}
+
+.fnum {
+    width: 225px;
+    height: 22px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+}
