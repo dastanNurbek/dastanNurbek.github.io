@@ -3,10 +3,10 @@ import ImageCard from './ImageCard';
 import { motion } from 'framer-motion';
 
 const Projects = () => {
-  // Fade-in and slide-up animation for each project card
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 100 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+  // Fade-in animation for each project card
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.6 } },
   };
 
   return (
@@ -20,7 +20,7 @@ const Projects = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ amount: 0.5 }} // Trigger animation when 50% of the element is visible
-          variants={fadeInUp}
+          variants={fadeIn}
         >
           <ImageCard
             imageUrl="/images/orbit.png"
@@ -44,7 +44,7 @@ const Projects = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ amount: 0.5 }} // Trigger animation when 50% of the element is visible
-          variants={fadeInUp}
+          variants={fadeIn}
         >
           <ImageCard
             imageUrl="/images/editor.png"

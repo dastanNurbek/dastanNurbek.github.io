@@ -18,11 +18,10 @@ const Background = () => {
         };
     }, []);
 
-    // Animations based on scroll position
-    const fadeInUp = {
-        hidden: { opacity: 0, y: 100 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-    };
+    const fadeIn = {
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { duration: 0.6 } },
+      };
 
     return (
         <div id="background" className="max-w-[1200px] mx-auto w-full">
@@ -36,7 +35,7 @@ const Background = () => {
                     className="block md:hidden text-left text-sm"
                     initial="hidden"
                     animate={scrollY > 200 ? 'visible' : 'hidden'}
-                    variants={fadeInUp}
+                    variants={fadeIn}
                 >
                     <p className="uppercase px-10 sm:pl-20">
                         <span className="font-bold">Master of Science</span>, Copernicus Master in Digital Earth 🌍
@@ -76,7 +75,7 @@ const Background = () => {
                     className="hidden md:block text-left text-sm col-span-2 pt-2"
                     initial="hidden"
                     animate={scrollY > 200 ? 'visible' : 'hidden'}
-                    variants={fadeInUp}
+                    variants={fadeIn}
                 >
                     <p className="uppercase px-10 sm:pl-20">
                         <span className="font-bold">Master of Science</span>, Copernicus Master in Digital Earth 🌍

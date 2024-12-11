@@ -13,7 +13,7 @@ const Navbar = () => {
     
         // Determine offset based on screen width
         const isMobile = window.innerWidth <= 768; // Adjust breakpoint if needed
-        const offset = isMobile ? 100 : 200; // Use a smaller offset for mobile
+        const offset = isMobile ? 100 : 250; // Use a smaller offset for mobile
     
         const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
     

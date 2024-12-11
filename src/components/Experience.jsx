@@ -3,10 +3,9 @@ import { motion } from 'framer-motion';
 
 const Experience = () => {
 
-  // Fade-in and slide-up animation for sections
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 100 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.6 } },
   };
 
   return (
@@ -20,7 +19,7 @@ const Experience = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ amount: 0.5 }} // Trigger animation every time the element is 50% in view
-          variants={fadeInUp}
+          variants={fadeIn}
         >
           <div className="border-l-2 border-[#93c5fd] pl-4">
             <h3 className="font-bold uppercase">Research Assistant - Al-Farabi Kazakh National University</h3>
@@ -45,7 +44,7 @@ const Experience = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ amount: 0.5 }} // Trigger animation every time the element is 50% in view
-          variants={fadeInUp}
+          variants={fadeIn}
         >
           <div className="border-l-2 border-[#93c5fd] pl-4">
             <h3 className="font-bold uppercase">Research Assistant - Al-Farabi Kazakh National University</h3>

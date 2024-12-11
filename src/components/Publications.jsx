@@ -2,10 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const Publications = () => {
-  // Fade-in and slide-up animation for the publication
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 100 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.6 } },
   };
 
   return (
@@ -19,7 +18,7 @@ const Publications = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ amount: 0.5 }} // Trigger animation when 50% of the element is in view
-          variants={fadeInUp}
+          variants={fadeIn}
         >
           <a
             className="font-bold uppercase text-base underline underline-offset-4 decoration-2 decoration-[#93c5fd]"
@@ -54,7 +53,7 @@ const Publications = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ amount: 0.5 }} // Trigger animation when 50% of the element is in view
-          variants={fadeInUp}
+          variants={fadeIn}
         >
           <a
             className="font-bold uppercase text-base underline underline-offset-4 decoration-2 decoration-[#93c5fd]"

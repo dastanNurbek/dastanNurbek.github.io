@@ -2,10 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const Skills = () => {
-  // Fade-in and slide-up animation for sections
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 100 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.6 } },
   };
 
   return (
@@ -19,7 +18,7 @@ const Skills = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ amount: 0.5 }} // Trigger animation every time the element is 50% in view
-          variants={fadeInUp}
+          variants={fadeIn}
         >
           <div className="w-full">
             <h1 className="pb-4 uppercase font-bold tracking-wide underline underline-offset-4 decoration-2 decoration-[#93c5fd]">Languages</h1>
@@ -55,7 +54,7 @@ const Skills = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ amount: 0.5 }} // Trigger animation every time the element is 50% in view
-          variants={fadeInUp}
+          variants={fadeIn}
         >
           <div className="w-full">
             <h1 className="pb-4 uppercase font-bold tracking-wide underline underline-offset-4 decoration-2 decoration-[#93c5fd]">Languages</h1>
