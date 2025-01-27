@@ -5,3 +5,12 @@
 body {
     background-color: #fbfbfe;
 }
+
+.slick-prev:before {
+    color: rgb(0, 0, 0) !important;
+    background-color: #eeeeee00;
+}
+.slick-next:before {
+    color: rgb(0, 0, 0) !important;
+    background-color: #eeeeee00;
+}
