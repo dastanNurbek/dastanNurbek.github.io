@@ -19,10 +19,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/#/traffic-emission-simulation" element={<TrafficSimulation />} />
-        <Route path="/#/eo-browser" element={<EOBrowser />} />
-        <Route path="/#/sen2cube" element={<Sen2Cube />} />
-        <Route path="/#/segmentation" element={<Segmentation />} />
+        <Route path="/traffic-emission-simulation" element={<TrafficSimulation />} />
+        <Route path="/eo-browser" element={<EOBrowser />} />
+        <Route path="/sen2cube" element={<Sen2Cube />} />
+        <Route path="/segmentation" element={<Segmentation />} />
         <Route path="/" element={
           <div>
             <Navbar />
