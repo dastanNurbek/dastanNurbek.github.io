@@ -11,12 +11,18 @@ import Publications from "./components/Publications";
 import Conferences from "./components/Conferences";
 import Contact from "./components/Contact";
 import TrafficSimulation from "./components/projects/TrafficSimulation";
+import EOBrowser from "./components/projects/EOBrowser";
+import Sen2Cube from "./components/projects/Sen2cube";
+import Segmentation from "./components/projects/Segmentation";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/traffic-emission-simulation" element={<TrafficSimulation />} />
+        <Route path="/eo-browser" element={<EOBrowser />} />
+        <Route path="/sen2cube" element={<Sen2Cube />} />
+        <Route path="/segmentation" element={<Segmentation />} />
         <Route path="/" element={
           <div>
             <Navbar />
