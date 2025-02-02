@@ -68,10 +68,10 @@ const Projects = () => {
             viewport={{ amount: 0.5 }}
             variants={fadeIn}
           >
-            <ImageCard imageUrl="/images/traffic.png" linkUrl="/traffic-emission-simulation" />
+            <ImageCard imageUrl="/images/traffic.png" linkUrl="#/traffic-emission-simulation" />
             <div className="flex justify-between py-4 w-60">
               <h1 className="font-bold uppercase">Traffic Emission Simulation</h1>
-              <a className="text-right hover:text-gray-400" href="/traffic-emission-simulation">
+              <a className="text-right hover:text-gray-400" href="#/traffic-emission-simulation">
                 Visit↗
               </a>
             </div>
@@ -107,10 +107,10 @@ const Projects = () => {
             viewport={{ amount: 0.5 }}
             variants={fadeIn}
           >
-            <ImageCard imageUrl="/images/segmentation.png" linkUrl="/segmentation" />
+            <ImageCard imageUrl="/images/segmentation.png" linkUrl="#/segmentation" />
             <div className="flex justify-between py-4 w-60">
               <h1 className="font-bold uppercase">eCognition vs. Open-source</h1>
-              <a className="text-right hover:text-gray-400" href="/segmentation">
+              <a className="text-right hover:text-gray-400" href="#/segmentation">
                 Visit↗
               </a>
             </div>
@@ -126,10 +126,10 @@ const Projects = () => {
             viewport={{ amount: 0.5 }}
             variants={fadeIn}
           >
-            <ImageCard imageUrl="/images/sen2cube.png" linkUrl="/sen2cube" />
+            <ImageCard imageUrl="/images/sen2cube.png" linkUrl="#/sen2cube" />
             <div className="flex justify-between py-4 w-60">
               <h1 className="font-bold uppercase">Water Area Calculator</h1>
-              <a className="text-right hover:text-gray-400" href="/sen2cube">
+              <a className="text-right hover:text-gray-400" href="#/sen2cube">
                 Visit↗
               </a>
             </div>
@@ -163,10 +163,10 @@ const Projects = () => {
             viewport={{ amount: 0.5 }}
             variants={fadeIn}
           >
-            <ImageCard imageUrl="/images/eo-browser.png" linkUrl="/eo-browser" />
+            <ImageCard imageUrl="/images/eo-browser.png" linkUrl="#/eo-browser" />
             <div className="flex justify-between py-4 w-60">
               <h1 className="font-bold uppercase">Wildfire Case Study</h1>
-              <a className="text-right hover:text-gray-400" href="/eo-browser">
+              <a className="text-right hover:text-gray-400" href="#/eo-browser">
                 Visit↗
               </a>
             </div>
