@@ -52,7 +52,7 @@ their value by 0.8 (Traffic, 111-116).
       </p >
 
       <div className="mt-2 justify-items-center">
-        <img src="/images/diagram.png" alt="Traffic Emission Simulation" className="container" />
+        <img src="/images/diagram.png" alt="Traffic Emission Simulation" className="container md:max-w-sm" />
         <p className='mb-2'>
           Figure 1. UML diagram of the traffic model.
         </p >
@@ -260,11 +260,11 @@ their value by 0.8 (Traffic, 111-116).
       </p>
 
       <div className="mt-2 justify-items-center">
-        <img src="/images/result-sim.png" alt="Traffic Emission Simulation" className="container" />
+        <img src="/images/result-sim.png" alt="Traffic Emission Simulation" className="container md:max-w-lg" />
       </div>
 
       <div className="justify-items-center">
-        <img src="/images/result-real.png" alt="Traffic Emission Simulation" className="container" />
+        <img src="/images/result-real.png" alt="Traffic Emission Simulation" className="container md:max-w-lg" />
         <p className='mb-2'>
           Figure 2. Simulated (top) vs real-world (NOx) (bottom) air pollution levels.
         </p >
@@ -279,7 +279,7 @@ their value by 0.8 (Traffic, 111-116).
       </p>
 
       <div className="justify-items-center">
-        <img src="/images/comparison_3.png" alt="Traffic Emission Simulation" className="container" />
+        <img src="/images/comparison_3.png" alt="Traffic Emission Simulation" className="container md:max-w-sm" />
         <p className='mb-2'>
           Figure 3. Normalized difference between simulated and real-world data.
         </p >

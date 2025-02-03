@@ -68,8 +68,8 @@ const EOBrowser = () => {
         </p>
 
         <div className="mt-2 grid grid-cols-2 gap-4 justify-items-center">
-            <img src="/images/eo-1.jpg" alt="Traffic Emission Simulation" className="container" />
-            <img src="/images/eo-2.jpg" alt="Traffic Emission Simulation" className="container" />
+            <img src="/images/eo-1.jpg" alt="Traffic Emission Simulation" className="container md:max-w-xs" />
+            <img src="/images/eo-2.jpg" alt="Traffic Emission Simulation" className="container md:max-w-xs" />
         </div>
             
         <div className='justify-items-center'>
@@ -87,7 +87,7 @@ const EOBrowser = () => {
         </p>
 
         <div className="justify-items-center">
-            <img src="/images/eo-3.jpg" alt="Traffic Emission Simulation" className="container" />
+            <img src="/images/eo-3.jpg" alt="Traffic Emission Simulation" className="container md:max-w-sm" />
             <p className='mb-2'>
             Figure 2. Custom script result.
             </p >
