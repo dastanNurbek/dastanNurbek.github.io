@@ -52,7 +52,7 @@ their value by 0.8 (Traffic, 111-116).
       </p >
 
       <div className="mt-2 justify-items-center">
-        <img src="/images/diagram.png" alt="Traffic Emission Simulation" className="max-w-sm" />
+        <img src="/images/diagram.png" alt="Traffic Emission Simulation" className="container" />
         <p className='mb-2'>
           Figure 1. UML diagram of the traffic model.
         </p >
@@ -260,11 +260,11 @@ their value by 0.8 (Traffic, 111-116).
       </p>
 
       <div className="mt-2 justify-items-center">
-        <img src="/images/result-sim.png" alt="Traffic Emission Simulation" className="max-w-lg" />
+        <img src="/images/result-sim.png" alt="Traffic Emission Simulation" className="container" />
       </div>
 
       <div className="justify-items-center">
-        <img src="/images/result-real.png" alt="Traffic Emission Simulation" className="max-w-lg" />
+        <img src="/images/result-real.png" alt="Traffic Emission Simulation" className="container" />
         <p className='mb-2'>
           Figure 2. Simulated (top) vs real-world (NOx) (bottom) air pollution levels.
         </p >
@@ -279,7 +279,7 @@ their value by 0.8 (Traffic, 111-116).
       </p>
 
       <div className="justify-items-center">
-        <img src="/images/comparison_3.png" alt="Traffic Emission Simulation" className="max-w-lg" />
+        <img src="/images/comparison_3.png" alt="Traffic Emission Simulation" className="container" />
         <p className='mb-2'>
           Figure 3. Normalized difference between simulated and real-world data.
         </p >
@@ -313,19 +313,19 @@ their value by 0.8 (Traffic, 111-116).
 
       <h1 className="text-xl font-bold mb-4 mt-10 text-center">References</h1>
       <p className='mb-2'>
-        &nbsp;&nbsp;&nbsp;&nbsp;Paris Open Data. <span className='italic'>OpenDataParis.</span> <a className='underline decoration-sky-500' href='https://opendata.paris.fr/explore/dataset/comptages-routiers-permanents/information/'>https://opendata.paris.fr/explore/dataset/comptages-routiers-permanents/information/</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;Paris Open Data. <span className='italic'>OpenDataParis.</span> <a className='underline decoration-sky-500' href='https://opendata.paris.fr/explore/dataset/comptages-routiers-permanents/information/'>Link</a>
       </p>
       <p className='mb-2'>
-        &nbsp;&nbsp;&nbsp;&nbsp;Airparif. <span className='italic'>Airparif.</span> <a className='underline decoration-sky-500' href='https://data-airparif-asso.opendata.arcgis.com/'>https://data-airparif-asso.opendata.arcgis.com/</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;Airparif. <span className='italic'>Airparif.</span> <a className='underline decoration-sky-500' href='https://data-airparif-asso.opendata.arcgis.com/'>Link</a>
       </p>
       <p className='mb-2'>
-        &nbsp;&nbsp;&nbsp;&nbsp;Weather Underground. <span className='italic'>Val-de-Marne, France Weather History.</span> <a className='underline decoration-sky-500' href='https://www.wunderground.com/history/daily/fr/paris/LFPO/date/2024-7-19'>https://www.wunderground.com/history/daily/fr/paris/LFPO/date/2024-7-19</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;Weather Underground. <span className='italic'>Val-de-Marne, France Weather History.</span> <a className='underline decoration-sky-500' href='https://www.wunderground.com/history/daily/fr/paris/LFPO/date/2024-7-19'>Link</a>
       </p>
       <p className='mb-2'>
-        &nbsp;&nbsp;&nbsp;&nbsp;Dastan Nurbekuly. <span className='italic'>Traffic.</span> GitHub Repository. <a className='underline decoration-sky-500' href='https://github.com/dastanNurbek/spatial-simulation/tree/main/Models/Traffic'>https://github.com/dastanNurbek/spatial-simulation/tree/main/Models/Traffic</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;Dastan Nurbekuly. <span className='italic'>Traffic.</span> GitHub Repository. <a className='underline decoration-sky-500' href='https://github.com/dastanNurbek/spatial-simulation/tree/main/Models/Traffic'>Link</a>
       </p>
       <p className='mb-2'>
-        &nbsp;&nbsp;&nbsp;&nbsp;GAMA Documentation. <span className='italic'>GAMA Platform.</span> <a className='underline decoration-sky-500' href='https://gama-platform.org/wiki/Home'>https://gama-platform.org/wiki/Home</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;GAMA Documentation. <span className='italic'>GAMA Platform.</span> <a className='underline decoration-sky-500' href='https://gama-platform.org/wiki/Home'>Link</a>
       </p>
     </div>
   );

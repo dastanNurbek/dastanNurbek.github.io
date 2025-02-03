@@ -46,7 +46,7 @@ const Segmentation = () => {
         </p>
 
         <div className="justify-items-center">
-            <img src="/images/segmentation-table.png" alt="Traffic Emission Simulation" className="max-w-4xl" />
+            <img src="/images/segmentation-table.png" alt="Traffic Emission Simulation" className="container" />
         </div>
 
         <h1 className="text-xl font-bold mb-4 mt-10 text-center">References</h1>
