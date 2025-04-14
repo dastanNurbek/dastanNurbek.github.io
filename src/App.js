@@ -9,6 +9,7 @@ import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Publications from "./components/Publications";
 import Conferences from "./components/Conferences";
+import Courses from "./components/Courses";
 import Contact from "./components/Contact";
 import TrafficSimulation from "./components/projects/TrafficSimulation";
 import EOBrowser from "./components/projects/EOBrowser";
@@ -38,6 +39,8 @@ function App() {
             <Publications />
             <Gap />
             <Conferences />
+            <Gap />
+            <Courses />
             <Gap />
             <Contact />
           </div>}
