@@ -15,11 +15,13 @@ import TrafficSimulation from "./components/projects/TrafficSimulation";
 import EOBrowser from "./components/projects/EOBrowser";
 import Sen2Cube from "./components/projects/Sen2cube";
 import Segmentation from "./components/projects/Segmentation";
+import CampusMap from "./components/projects/Campusmap";
 
 function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/campusmap" element={<CampusMap />} />
         <Route path="/traffic-emission-simulation" element={<TrafficSimulation />} />
         <Route path="/eo-browser" element={<EOBrowser />} />
         <Route path="/sen2cube" element={<Sen2Cube />} />

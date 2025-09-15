@@ -60,6 +60,25 @@ const Projects = () => {
             the audience about Copernicus and its Services.</p>
           </motion.div>
 
+          {/*Project - CampusMap */}
+          <motion.div
+            className="p-4 justify-items-center"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ amount: 0.5 }}
+            variants={fadeIn}
+          >
+            <ImageCard imageUrl="/images/campus-map.png" linkUrl="#/campusmap" />
+            <div className="flex justify-between py-4 w-60">
+              <h1 className="font-bold uppercase">CampusMap Game</h1>
+              <a className="text-right hover:text-gray-400" href="#/campusmap">
+                Visit↗
+              </a>
+            </div>
+            <p className='w-60'> <span className="font-bold">Internship:</span> Serious game developed using <span className="font-bold">Unity</span> and <span className="font-bold">ArcGIS SDK</span> to 
+            explore PLUS Geoinformatics department and complete quests.</p>
+          </motion.div>
+
           {/*Project - Traffic Emission Simulation */}
           <motion.div
             className="p-4 justify-items-center"

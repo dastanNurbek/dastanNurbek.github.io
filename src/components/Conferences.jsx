@@ -8,7 +8,7 @@ function Conferences() {
   };
 
   return (
-    <div className="max-w-[1200px] mx-auto w-full">
+    <div id="conferences" className="max-w-[1200px] mx-auto w-full">
       <div className="grid md:grid-cols-3 gap-8 h-full">
         <h1 className="uppercase font-bold text-lg sm:text-xl tracking-wider px-10 pb-6">Conferences</h1>
 

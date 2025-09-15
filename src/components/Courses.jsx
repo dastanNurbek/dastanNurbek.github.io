@@ -8,9 +8,9 @@ function Courses() {
   };
 
   return (
-    <div className="max-w-[1200px] mx-auto w-full">
+    <div id="activities" className="max-w-[1200px] mx-auto w-full">
       <div className="grid md:grid-cols-3 gap-8 h-full">
-        <h1 className="uppercase font-bold text-lg sm:text-xl tracking-wider px-10 pb-6">Courses</h1>
+        <h1 className="uppercase font-bold text-lg sm:text-xl tracking-wider px-10 pb-6">Activities</h1>
 
         {/* Mobile view conference items */}
         <motion.div
@@ -44,6 +44,35 @@ function Courses() {
                 content.
             </p>
             <p className="text-gray-400 text-xs">Palacký University Olomouc, 2025</p>
+          </div>
+
+          <div className="mt-10">
+            <h1>
+              <span className="uppercase font-bold">AI4EO 2025</span>, International Symposium on AI for Earth Observation
+            </h1>
+            <p className="py-2">
+                The AI4EO Symposium held in Rennes on September 11–12 was an enriching experience 
+                that deepened my understanding of artificial intelligence for Earth Observation. The 
+                program featured four keynote speakers who presented their work on a diverse set of 
+                topics, including forestry, foundation models, bias mitigation in deep learning, and 
+                digital twins. Complementing the talks, poster sessions provided valuable insight 
+                into current research trends in AI4EO.
+            </p>
+            <p className="py-2">
+                I gained new perspectives on self-supervised learning, foundation models, and 
+                multi-modal approaches. One poster that particularly caught my attention was 
+                SSL4Eco, a phenology-aware dataset for ecological research developed by the 
+                Swiss Federal Research Institute and the EcoVision Lab. The authors proposed 
+                an innovative method for sampling images tailored to foundation models, with 
+                a focus on natural ecosystems rather than agricultural landscapes.
+            </p>
+            <p className="py-2">
+                Another highlight was a poster on the super-resolution of GOME-2 data using deep 
+                learning. Having previously worked with NOx satellite products, I found this study 
+                especially relevant. By enhancing spatial resolution and validating results against 
+                in-situ measurements, the work offers improved precision for atmospheric studies.
+            </p>
+            <p className="text-gray-400 text-xs">Rennes, Britanny, France, 2025</p>
           </div>
 
         </motion.div>
@@ -80,6 +109,35 @@ function Courses() {
                 content.
             </p>
             <p className="text-gray-400 text-xs">Palacký University Olomouc, 2025</p>
+          </div>
+
+          <div className="mt-10">
+            <h1>
+              <span className="font-bold">AI4EO 2025</span>, International Symposium on AI for Earth Observation
+            </h1>
+            <p className="py-2">
+                The AI4EO Symposium held in Rennes on September 11–12 was an enriching experience 
+                that deepened my understanding of artificial intelligence for Earth Observation. The 
+                program featured four keynote speakers who presented their work on a diverse set of 
+                topics, including forestry, foundation models, bias mitigation in deep learning, and 
+                digital twins. Complementing the talks, poster sessions provided valuable insight 
+                into current research trends in AI4EO.
+            </p>
+            <p className="py-2">
+                I gained new perspectives on self-supervised learning, foundation models, and 
+                multi-modal approaches. One poster that particularly caught my attention was 
+                SSL4Eco, a phenology-aware dataset for ecological research developed by the 
+                Swiss Federal Research Institute and the EcoVision Lab. The authors proposed 
+                an innovative method for sampling images tailored to foundation models, with 
+                a focus on natural ecosystems rather than agricultural landscapes.
+            </p>
+            <p className="py-2">
+                Another highlight was a poster on the super-resolution of GOME-2 data using deep 
+                learning. Having previously worked with NOx satellite products, I found this study 
+                especially relevant. By enhancing spatial resolution and validating results against 
+                in-situ measurements, the work offers improved precision for atmospheric studies.
+            </p>
+            <p className="text-gray-400 text-xs">Rennes, Britanny, France, 2025</p>
           </div>
 
         </motion.div>

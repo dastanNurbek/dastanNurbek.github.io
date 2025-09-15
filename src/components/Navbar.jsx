@@ -35,6 +35,8 @@ const Navbar = () => {
             <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('skills')}>Skills</li>
             <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('projects')}>Projects</li>
             <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('publications')}>Publications</li>
+            <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('conferences')}>Conferences</li>
+            <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('activities')}>Activities</li>
             <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('contact')}>Contact</li>
         </ul>
 
@@ -51,6 +53,8 @@ const Navbar = () => {
                 <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('skills')}>Skills</li>
                 <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('projects')}>Projects</li>
                 <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('publications')}>Publications</li>
+                <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('conferences')}>Conferences</li>
+                <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('activities')}>Activities</li>
                 <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('contact')}>Contact</li>
             </ul>
         </div>
