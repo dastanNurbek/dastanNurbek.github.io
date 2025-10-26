@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 function Courses() {
+  const [showISSonVIS, setShowISSonVIS] = useState(false);
+  const [showAI4EO, setShowAI4EO] = useState(false);
+
   const fadeIn = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { duration: 0.6 } },
@@ -17,64 +20,83 @@ function Courses() {
           className="block md:hidden text-left text-sm px-10 sm:pl-20"
           initial="hidden"
           whileInView="visible"
-          viewport={{ amount: 0.5 }} // Trigger animation when 50% of the element is in view
+          viewport={{ amount: 0.5 }}
           variants={fadeIn}
         >
           <div>
             <h1>
               <span className="uppercase font-bold">ISSonVIS 2025</span>, International Spring School on Visualization
             </h1>
-            <p className="py-2">
-                Over the course of two days, I gained a broad 
-                understanding of how maps and visual data can be 
-                powerful tools for both conveying truth and spreading 
-                misinformation. The sessions covered topics like trust in 
-                maps, how visualizations can be manipulated, and how user 
-                perception is influenced by design, psychology, and even 
-                technology. I learned how easily maps can be used to distort 
-                reality and the importance of being critical of what we 
-                see, especially in the context of digital media.
-            </p>
-            <p className="py-2">
-                The course also emphasized ethical considerations in map-making and 
-                explored the growing role of AI in both creating and combating 
-                disinformation. Through both lectures and practical sessions, I 
-                became more aware of how visual information shapes public opinion 
-                and the responsibility that comes with creating trustworthy 
-                content.
-            </p>
-            <p className="text-gray-400 text-xs">Palacký University Olomouc, 2025</p>
+            {showISSonVIS && (
+              <>
+                <p className="py-2">
+                  Over the course of two days, I gained a broad 
+                  understanding of how maps and visual data can be 
+                  powerful tools for both conveying truth and spreading 
+                  misinformation. The sessions covered topics like trust in 
+                  maps, how visualizations can be manipulated, and how user 
+                  perception is influenced by design, psychology, and even 
+                  technology. I learned how easily maps can be used to distort 
+                  reality and the importance of being critical of what we 
+                  see, especially in the context of digital media.
+                </p>
+                <p className="py-2">
+                  The course also emphasized ethical considerations in map-making and 
+                  explored the growing role of AI in both creating and combating 
+                  disinformation. Through both lectures and practical sessions, I 
+                  became more aware of how visual information shapes public opinion 
+                  and the responsibility that comes with creating trustworthy 
+                  content.
+                </p>
+              </>
+            )}
+            <button
+              onClick={() => setShowISSonVIS(!showISSonVIS)}
+              className="text-blue-500 hover:text-blue-700 text-xs mt-2"
+            >
+              {showISSonVIS ? 'Show less' : 'Show more'}
+            </button>
+            <p className="text-gray-400 text-xs mt-2">Palacký University Olomouc, 2025</p>
           </div>
 
           <div className="mt-10">
             <h1>
               <span className="uppercase font-bold">AI4EO 2025</span>, International Symposium on AI for Earth Observation
             </h1>
-            <p className="py-2">
-                The AI4EO Symposium held in Rennes on September 11–12 was an enriching experience 
-                that deepened my understanding of artificial intelligence for Earth Observation. The 
-                program featured four keynote speakers who presented their work on a diverse set of 
-                topics, including forestry, foundation models, bias mitigation in deep learning, and 
-                digital twins. Complementing the talks, poster sessions provided valuable insight 
-                into current research trends in AI4EO.
-            </p>
-            <p className="py-2">
-                I gained new perspectives on self-supervised learning, foundation models, and 
-                multi-modal approaches. One poster that particularly caught my attention was 
-                SSL4Eco, a phenology-aware dataset for ecological research developed by the 
-                Swiss Federal Research Institute and the EcoVision Lab. The authors proposed 
-                an innovative method for sampling images tailored to foundation models, with 
-                a focus on natural ecosystems rather than agricultural landscapes.
-            </p>
-            <p className="py-2">
-                Another highlight was a poster on the super-resolution of GOME-2 data using deep 
-                learning. Having previously worked with NOx satellite products, I found this study 
-                especially relevant. By enhancing spatial resolution and validating results against 
-                in-situ measurements, the work offers improved precision for atmospheric studies.
-            </p>
-            <p className="text-gray-400 text-xs">Rennes, Britanny, France, 2025</p>
+            {showAI4EO && (
+              <>
+                <p className="py-2">
+                  The AI4EO Symposium held in Rennes on September 11–12 was an enriching experience 
+                  that deepened my understanding of artificial intelligence for Earth Observation. The 
+                  program featured four keynote speakers who presented their work on a diverse set of 
+                  topics, including forestry, foundation models, bias mitigation in deep learning, and 
+                  digital twins. Complementing the talks, poster sessions provided valuable insight 
+                  into current research trends in AI4EO.
+                </p>
+                <p className="py-2">
+                  I gained new perspectives on self-supervised learning, foundation models, and 
+                  multi-modal approaches. One poster that particularly caught my attention was 
+                  SSL4Eco, a phenology-aware dataset for ecological research developed by the 
+                  Swiss Federal Research Institute and the EcoVision Lab. The authors proposed 
+                  an innovative method for sampling images tailored to foundation models, with 
+                  a focus on natural ecosystems rather than agricultural landscapes.
+                </p>
+                <p className="py-2">
+                  Another highlight was a poster on the super-resolution of GOME-2 data using deep 
+                  learning. Having previously worked with NOx satellite products, I found this study 
+                  especially relevant. By enhancing spatial resolution and validating results against 
+                  in-situ measurements, the work offers improved precision for atmospheric studies.
+                </p>
+              </>
+            )}
+            <button
+              onClick={() => setShowAI4EO(!showAI4EO)}
+              className="text-blue-500 hover:text-blue-700 text-xs mt-2"
+            >
+              {showAI4EO ? 'Show less' : 'Show more'}
+            </button>
+            <p className="text-gray-400 text-xs mt-2">Rennes, Britanny, France, 2025</p>
           </div>
-
         </motion.div>
 
         {/* Desktop view conference items */}
@@ -82,64 +104,83 @@ function Courses() {
           className="hidden md:block px-10 sm:pl-20 text-sm col-span-2 pt-2"
           initial="hidden"
           whileInView="visible"
-          viewport={{ amount: 0.5 }} // Trigger animation when 50% of the element is in view
+          viewport={{ amount: 0.5 }}
           variants={fadeIn}
         >
           <div>
             <h1>
               <span className="font-bold">ISSonVIS 2025</span>, International Spring School on Visualization
             </h1>
-            <p className="py-2">
-                Over the course of two days, I gained a broad 
-                understanding of how maps and visual data can be 
-                powerful tools for both conveying truth and spreading 
-                misinformation. The sessions covered topics like trust in 
-                maps, how visualizations can be manipulated, and how user 
-                perception is influenced by design, psychology, and even 
-                technology. I learned how easily maps can be used to distort 
-                reality and the importance of being critical of what we 
-                see, especially in the context of digital media.
-            </p>
-            <p className="py-2">
-                The course also emphasized ethical considerations in map-making and 
-                explored the growing role of AI in both creating and combating 
-                disinformation. Through both lectures and practical sessions, I 
-                became more aware of how visual information shapes public opinion 
-                and the responsibility that comes with creating trustworthy 
-                content.
-            </p>
-            <p className="text-gray-400 text-xs">Palacký University Olomouc, 2025</p>
+            {showISSonVIS && (
+              <>
+                <p className="py-2">
+                  Over the course of two days, I gained a broad 
+                  understanding of how maps and visual data can be 
+                  powerful tools for both conveying truth and spreading 
+                  misinformation. The sessions covered topics like trust in 
+                  maps, how visualizations can be manipulated, and how user 
+                  perception is influenced by design, psychology, and even 
+                  technology. I learned how easily maps can be used to distort 
+                  reality and the importance of being critical of what we 
+                  see, especially in the context of digital media.
+                </p>
+                <p className="py-2">
+                  The course also emphasized ethical considerations in map-making and 
+                  explored the growing role of AI in both creating and combating 
+                  disinformation. Through both lectures and practical sessions, I 
+                  became more aware of how visual information shapes public opinion 
+                  and the responsibility that comes with creating trustworthy 
+                  content.
+                </p>
+              </>
+            )}
+            <button
+              onClick={() => setShowISSonVIS(!showISSonVIS)}
+              className="text-blue-500 hover:text-blue-700 text-xs mt-2"
+            >
+              {showISSonVIS ? 'Show less' : 'Show more'}
+            </button>
+            <p className="text-gray-400 text-xs mt-2">Palacký University Olomouc, 2025</p>
           </div>
 
           <div className="mt-10">
             <h1>
               <span className="font-bold">AI4EO 2025</span>, International Symposium on AI for Earth Observation
             </h1>
-            <p className="py-2">
-                The AI4EO Symposium held in Rennes on September 11–12 was an enriching experience 
-                that deepened my understanding of artificial intelligence for Earth Observation. The 
-                program featured four keynote speakers who presented their work on a diverse set of 
-                topics, including forestry, foundation models, bias mitigation in deep learning, and 
-                digital twins. Complementing the talks, poster sessions provided valuable insight 
-                into current research trends in AI4EO.
-            </p>
-            <p className="py-2">
-                I gained new perspectives on self-supervised learning, foundation models, and 
-                multi-modal approaches. One poster that particularly caught my attention was 
-                SSL4Eco, a phenology-aware dataset for ecological research developed by the 
-                Swiss Federal Research Institute and the EcoVision Lab. The authors proposed 
-                an innovative method for sampling images tailored to foundation models, with 
-                a focus on natural ecosystems rather than agricultural landscapes.
-            </p>
-            <p className="py-2">
-                Another highlight was a poster on the super-resolution of GOME-2 data using deep 
-                learning. Having previously worked with NOx satellite products, I found this study 
-                especially relevant. By enhancing spatial resolution and validating results against 
-                in-situ measurements, the work offers improved precision for atmospheric studies.
-            </p>
-            <p className="text-gray-400 text-xs">Rennes, Britanny, France, 2025</p>
+            {showAI4EO && (
+              <>
+                <p className="py-2">
+                  The AI4EO Symposium held in Rennes on September 11–12 was an enriching experience 
+                  that deepened my understanding of artificial intelligence for Earth Observation. The 
+                  program featured four keynote speakers who presented their work on a diverse set of 
+                  topics, including forestry, foundation models, bias mitigation in deep learning, and 
+                  digital twins. Complementing the talks, poster sessions provided valuable insight 
+                  into current research trends in AI4EO.
+                </p>
+                <p className="py-2">
+                  I gained new perspectives on self-supervised learning, foundation models, and 
+                  multi-modal approaches. One poster that particularly caught my attention was 
+                  SSL4Eco, a phenology-aware dataset for ecological research developed by the 
+                  Swiss Federal Research Institute and the EcoVision Lab. The authors proposed 
+                  an innovative method for sampling images tailored to foundation models, with 
+                  a focus on natural ecosystems rather than agricultural landscapes.
+                </p>
+                <p className="py-2">
+                  Another highlight was a poster on the super-resolution of GOME-2 data using deep 
+                  learning. Having previously worked with NOx satellite products, I found this study 
+                  especially relevant. By enhancing spatial resolution and validating results against 
+                  in-situ measurements, the work offers improved precision for atmospheric studies.
+                </p>
+              </>
+            )}
+            <button
+              onClick={() => setShowAI4EO(!showAI4EO)}
+              className="text-blue-500 hover:text-blue-700 text-xs mt-2"
+            >
+              {showAI4EO ? 'Show less' : 'Show more'}
+            </button>
+            <p className="text-gray-400 text-xs mt-2">Rennes, Britanny, France, 2025</p>
           </div>
-
         </motion.div>
       </div>
     </div>
