@@ -16,10 +16,9 @@ const About = () => {
             </h1>
             <div>
                 <p className='text-lg sm:text-xl'>
-                    I'm an <span className="font-bold">Earth Observation Researcher</span><br /> 
-                    and a <TypeAnimation 
+                    I'm a <TypeAnimation 
                     className='text-lg sm:text-xl font-bold' 
-                    sequence={[' Developer', 1000, ' Data Scientist', 1000, ' Student', 1000]} 
+                    sequence={[' Developer.', 1000, ' Data Scientist.', 1000, ' Researcher.', 1000]} 
                     wrapper="span" speed={50} repeat={Infinity} />
                 </p>
             </div>
@@ -34,10 +33,9 @@ const About = () => {
             </h1>
             <div>
                 <p className='text-2xl'>
-                    I'm an <span className="font-bold">Earth Observation Researcher</span><br />
-                    and a <TypeAnimation 
+                    I'm a <TypeAnimation 
                     className='text-2xl font-bold'
-                    sequence={[' Developer', 1000, ' Data Scientist', 1000, ' Student', 1000]} 
+                    sequence={[' Developer.', 1000, ' Data Scientist.', 1000, ' Researcher.', 1000]} 
                     wrapper="span" speed={50} repeat={Infinity} />
                 </p>
             </div>

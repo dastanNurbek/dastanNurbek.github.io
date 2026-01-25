@@ -8,8 +8,7 @@ import Experience from "./components/Experience";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Publications from "./components/Publications";
-import Conferences from "./components/Conferences";
-import Courses from "./components/Courses";
+import Activities from "./components/Activities";
 import Contact from "./components/Contact";
 import TrafficSimulation from "./components/projects/TrafficSimulation";
 import EOBrowser from "./components/projects/EOBrowser";
@@ -34,16 +33,13 @@ function App() {
             <Gap />
             <Experience />
             <Gap />
-            <Skills />
-            <Gap />
             <Projects />
+            <Gap />
+            <Skills />
             <Gap />
             <Publications />
             <Gap />
-            <Conferences />
-            <Gap />
-            <Courses />
-            <Gap />
+            <Activities />
             <Contact />
           </div>}
         />

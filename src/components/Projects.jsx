@@ -9,7 +9,7 @@ const Projects = () => {
   // Fade-in animation for each project card
   const fadeIn = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.6 } },
+    visible: { opacity: 1, transition: { duration: 0.3 } },
   };
 
   // Slider settings
@@ -106,10 +106,10 @@ const Projects = () => {
             viewport={{ amount: 0.5 }}
             variants={fadeIn}
           >
-            <ImageCard imageUrl="/images/displacement.png" linkUrl="https://earth.google.com/web/@37.26295813,136.91549175,145.27503422a,310995.44694085d,35y,0h,0t,0r/data=CgRCAggBOgMKATBCAggASggIw9GgyQcQAA" />
+            <ImageCard imageUrl="/images/displacement.png" linkUrl="https://earth.google.com/earth/d/1cPCmIYKlfh73nHOM7u8IRuLH059doEWs?usp=sharing" />
             <div className="flex justify-between py-4 w-60">
               <h1 className="font-bold uppercase">Earthquake Displacement Map</h1>
-              <a className="text-right hover:text-gray-400" href="https://earth.google.com/web/@37.26295813,136.91549175,145.27503422a,310995.44694085d,35y,0h,0t,0r/data=CgRCAggBOgMKATBCAggASggIw9GgyQcQAA">
+              <a className="text-right hover:text-gray-400" href="https://earth.google.com/earth/d/1cPCmIYKlfh73nHOM7u8IRuLH059doEWs?usp=sharing">
                 Visit↗
               </a>
             </div>

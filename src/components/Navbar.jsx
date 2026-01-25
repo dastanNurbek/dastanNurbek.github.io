@@ -32,10 +32,9 @@ const Navbar = () => {
         <ul className='hidden md:flex uppercase'>
             <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('background')}>Background</li>
             <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('experience')}>Experience</li>
-            <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('skills')}>Skills</li>
             <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('projects')}>Projects</li>
+            <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('skills')}>Skills</li>
             <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('publications')}>Publications</li>
-            <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('conferences')}>Conferences</li>
             <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('activities')}>Activities</li>
             <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('contact')}>Contact</li>
         </ul>
@@ -50,10 +49,9 @@ const Navbar = () => {
             <ul className='uppercase'>
                 <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('background')}>Background</li>
                 <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('experience')}>Experience</li>
-                <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('skills')}>Skills</li>
                 <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('projects')}>Projects</li>
+                <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('skills')}>Skills</li>
                 <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('publications')}>Publications</li>
-                <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('conferences')}>Conferences</li>
                 <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('activities')}>Activities</li>
                 <li className='p-4 cursor-pointer hover:text-gray-400' onClick={() => scrollToSection('contact')}>Contact</li>
             </ul>
