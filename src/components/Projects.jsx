@@ -17,7 +17,7 @@ const Projects = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 2,
+    slidesToShow: 3,
     slidesToScroll: 1,
     responsive: [
       {
@@ -51,13 +51,30 @@ const Projects = () => {
           >
             <ImageCard imageUrl="/images/copernicus-laptop.png" linkUrl="https://play.unity.com/en/games/6e97a30f-d1dc-494d-a115-77d721f6445c/copernicus" />
             <div className="flex justify-between py-4 w-60">
-              <h1 className="font-bold uppercase">Copernicus Game</h1>
+              <h1 className="font-bold uppercase">Copurrnicus Game</h1>
               <a className="text-right hover:text-gray-400" href="https://play.unity.com/en/games/6e97a30f-d1dc-494d-a115-77d721f6445c/copernicus">
                 Visit↗
               </a>
             </div>
-            <p className='w-60'>Educational game developed using <span className="font-bold">Unity</span> to explain 
-            the audience about Copernicus and its Services.</p>
+            <p className='w-60'>Educational game developed using <span className="font-bold">Unity</span> to promote EU's Copernicus and its Services.</p>
+          </motion.div>
+
+          {/*Project - Unity-Augmentation */}
+          <motion.div
+            className="p-4 justify-items-center"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ amount: 0.5 }}
+            variants={fadeIn}
+          >
+            <ImageCard imageUrl="/images/unity-augmentation.png" linkUrl="https://github.com/dastanNurbek/unity_augmentation" />
+            <div className="flex justify-between py-4 w-60">
+              <h1 className="font-bold uppercase">Synthetic Data</h1>
+              <a className="text-right hover:text-gray-400" href="https://github.com/dastanNurbek/unity_augmentation">
+                Visit↗
+              </a>
+            </div>
+            <p className='w-60'><span className="font-bold">Unity</span> generated synthetic satellite data for Deep Learning tasks. Study on Wildfire Classification.</p>
           </motion.div>
 
           {/*Project - CampusMap */}
@@ -75,8 +92,8 @@ const Projects = () => {
                 Visit↗
               </a>
             </div>
-            <p className='w-60'> <span className="font-bold">Internship:</span> Serious game developed using <span className="font-bold">Unity</span> and <span className="font-bold">ArcGIS SDK</span> to 
-            explore PLUS Geoinformatics department and complete quests.</p>
+            <p className='w-60'>Serious game developed using <span className="font-bold">Unity</span> and <span className="font-bold">ArcGIS SDK</span> to 
+            explore Z_GIS and interact with real-time data.</p>
           </motion.div>
 
           {/*Project - Traffic Emission Simulation */}
@@ -89,7 +106,7 @@ const Projects = () => {
           >
             <ImageCard imageUrl="/images/traffic.png" linkUrl="#/traffic-emission-simulation" />
             <div className="flex justify-between py-4 w-60">
-              <h1 className="font-bold uppercase">Traffic Emission Simulation</h1>
+              <h1 className="font-bold uppercase">Spatial Simulation</h1>
               <a className="text-right hover:text-gray-400" href="#/traffic-emission-simulation">
                 Visit↗
               </a>

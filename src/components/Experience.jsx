@@ -4,6 +4,12 @@ import { motion } from 'framer-motion';
 const Experience = () => {
   const experiences = [
     {
+      title: "Internship - IGN (Geodata Paris)",
+      date: "May 2026 - ongoing",
+      description: "Researching the thesis topic 'Procedural Generation of Synthetic Aerial Images'",
+      side: "right"
+    },
+    {
       title: "Internship - Paris Lodron University of Salzburg",
       date: "July 2025 - Sep 2025",
       description: "Developed a 3D world platform using Unity and ArcGIS SDK for geospatial data visualization.",
@@ -12,7 +18,7 @@ const Experience = () => {
     {
       title: "Research Assistant - Al-Farabi Kazakh National University",
       date: "Jan 2024 - Jan 2025",
-      description: "Published one publication and participated in an international conference.",
+      description: "Published an article and participated in an international conference.",
       side: "right"
     },
     {

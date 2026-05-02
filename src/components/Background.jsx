@@ -4,8 +4,8 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const Background = () => {
     const [scrollY, setScrollY] = useState(0);
-    const [masterCoursesExpanded, setMasterCoursesExpanded] = useState(false);
-    const [bachelorCoursesExpanded, setBachelorCoursesExpanded] = useState(false);
+    const [masterCoursesExpanded, setMasterCoursesExpanded] = useState(true);
+    const [bachelorCoursesExpanded, setBachelorCoursesExpanded] = useState(true);
 
     useEffect(() => {
         const handleScroll = () => {
