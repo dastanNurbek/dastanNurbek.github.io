@@ -5,6 +5,7 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 function Activities() {
   const [showISSonVIS, setShowISSonVIS] = useState(false);
   const [showAI4EO, setShowAI4EO] = useState(false);
+  const [showAI4EO2026, setShowAI4EO2026] = useState(false);
 
   const fadeIn = {
     hidden: { opacity: 0 },
@@ -112,6 +113,25 @@ function Activities() {
 
           {/* Section: Professional Courses/Symposiums */}
           <div className="border-t border-gray-800 my-10 pt-10">
+            <ConferenceItem 
+              title="AI4EO Spring School 2026"
+              organization="International Spring School on AI for Earth Observation"
+              location="Vannes, Britanny, France"
+              year="2026"
+              isPresentation={false}
+              showDetails={showAI4EO2026}
+              setShowDetails={setShowAI4EO2026}
+              details={
+                <>
+                  <p>
+                    Participated and helped to organize the AI4EO Spring School in Vannes. The 
+                    program featured lectures and hands-on sessions on foundation models, MLOps, Responsible 
+                    AI and generative models, as well as a data-driven project from Phi-Lab.
+                  </p>  
+                </>
+              }
+            />
+
             <ConferenceItem 
               title="AI4EO 2025"
               organization="International Symposium on AI for Earth Observation"

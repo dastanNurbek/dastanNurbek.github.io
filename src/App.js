@@ -15,6 +15,7 @@ import EOBrowser from "./components/projects/EOBrowser";
 import Sen2Cube from "./components/projects/Sen2cube";
 import Segmentation from "./components/projects/Segmentation";
 import CampusMap from "./components/projects/Campusmap";
+import DengueCompetition from "./components/projects/DengueCompetition";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/eo-browser" element={<EOBrowser />} />
         <Route path="/sen2cube" element={<Sen2Cube />} />
         <Route path="/segmentation" element={<Segmentation />} />
+        <Route path="/dengue-competition" element={<DengueCompetition />} />
         <Route path="/" element={
           <div>
             <Navbar />
