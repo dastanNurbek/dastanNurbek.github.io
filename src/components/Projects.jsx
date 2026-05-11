@@ -25,6 +25,12 @@ const projects = [
     description: <>Serious game developed using <span className="font-bold">Unity</span> and <span className="font-bold">ArcGIS SDK</span> to explore Z_GIS and interact with real-time data.</>,
   },
   {
+    imageUrl: '/images/aircraft-detection.png',
+    linkUrl: '#/aircraft-detection',
+    title: 'Aircraft Detection',
+    description: <>Deep Learning project using <span className="font-bold">YOLO</span> and <span className="font-bold">Faster R-CNN</span> for aircraft detection in satellite imagery.</>,
+  },
+  {
     imageUrl: '/images/dengue.png',
     linkUrl: '#/dengue-competition',
     title: 'Dengue AI',
