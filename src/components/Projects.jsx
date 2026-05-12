@@ -25,6 +25,12 @@ const projects = [
     description: <>Serious game developed using <span className="font-bold">Unity</span> and <span className="font-bold">ArcGIS SDK</span> to explore Z_GIS and interact with real-time data.</>,
   },
   {
+    imageUrl: '/images/road-extraction.png',
+    linkUrl: 'https://github.com/dastanNurbek/torchgeo-road-extraction',
+    title: 'Road Extraction',
+    description: <>An in-depth <span className="font-bold">TorchGeo</span> tutorial for road extraction on DeepGlobe 2018 challenge dataset.</>,
+  },
+  {
     imageUrl: '/images/aircraft-detection.png',
     linkUrl: '#/aircraft-detection',
     title: 'Aircraft Detection',
