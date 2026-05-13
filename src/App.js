@@ -17,6 +17,8 @@ import Segmentation from "./components/projects/Segmentation";
 import CampusMap from "./components/projects/Campusmap";
 import DengueCompetition from "./components/projects/DengueCompetition";
 import AircraftDetection from "./components/projects/AircraftDetection";
+import BigDataDL from "./components/projects/BigDataDL";
+import BigDataML from "./components/projects/BigDataML";
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
         <Route path="/segmentation" element={<Segmentation />} />
         <Route path="/dengue-competition" element={<DengueCompetition />} />
         <Route path="/aircraft-detection" element={<AircraftDetection />} />
+        <Route path="/big-data-dl" element={<BigDataDL />} />
+        <Route path="/big-data-ml" element={<BigDataML />} />
         <Route path="/" element={
           <div>
             <Navbar />

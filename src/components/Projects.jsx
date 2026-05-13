@@ -37,6 +37,18 @@ const projects = [
     description: <>Deep Learning project using <span className="font-bold">YOLO</span> and <span className="font-bold">Faster R-CNN</span> for aircraft detection in satellite imagery.</>,
   },
   {
+    imageUrl: '/images/big-data.png',
+    linkUrl: '#/big-data-dl',
+    title: 'Distributed DL',
+    description: <>Big Data project using <span className="font-bold">PySpark</span> for training a Unet model on BigEarthNet dataset.</>,
+  },
+  {
+    imageUrl: '/images/big-data.png',
+    linkUrl: '#/big-data-ml',
+    title: 'Distributed ML',
+    description: <>Big Data project using <span className="font-bold">PySpark</span> for training a Random Forest model on FRACTAL dataset.</>,
+  },
+  {
     imageUrl: '/images/dengue.png',
     linkUrl: '#/dengue-competition',
     title: 'Dengue AI',
