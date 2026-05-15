@@ -25,16 +25,10 @@ const projects = [
     description: <>Serious game developed using <span className="font-bold">Unity</span> and <span className="font-bold">ArcGIS SDK</span> to explore Z_GIS and interact with real-time data.</>,
   },
   {
-    imageUrl: '/images/road-extraction.png',
-    linkUrl: 'https://github.com/dastanNurbek/torchgeo-road-extraction',
-    title: 'Road Extraction',
-    description: <>An in-depth <span className="font-bold">TorchGeo</span> tutorial for road extraction on DeepGlobe 2018 challenge dataset.</>,
-  },
-  {
-    imageUrl: '/images/aircraft-detection.png',
-    linkUrl: '#/aircraft-detection',
-    title: 'Aircraft Detection',
-    description: <>Deep Learning project using <span className="font-bold">YOLO</span> and <span className="font-bold">Faster R-CNN</span> for aircraft detection in satellite imagery.</>,
+    imageUrl: '/images/beyond-spectrum.png',
+    linkUrl: 'https://github.com/dastanNurbek/beyond-visible-spectrum-submission',
+    title: 'AI for Agriculture',
+    description: <>Kaggle submission for ICPR 2026 Competition on “Beyond Visible Spectrum: AI for Agriculture”. Using custom Neural Network architecture.</>,
   },
   {
     imageUrl: '/images/big-data.png',
@@ -47,6 +41,18 @@ const projects = [
     linkUrl: '#/big-data-ml',
     title: 'Distributed ML',
     description: <>Big Data project using <span className="font-bold">PySpark</span> for training a Random Forest model on FRACTAL dataset.</>,
+  },
+  {
+    imageUrl: '/images/road-extraction.png',
+    linkUrl: 'https://github.com/dastanNurbek/torchgeo-road-extraction',
+    title: 'Road Extraction',
+    description: <>An in-depth <span className="font-bold">TorchGeo</span> tutorial for road extraction on DeepGlobe 2018 challenge dataset.</>,
+  },
+  {
+    imageUrl: '/images/aircraft-detection.png',
+    linkUrl: '#/aircraft-detection',
+    title: 'Aircraft Detection',
+    description: <>Deep Learning project using <span className="font-bold">YOLO</span> and <span className="font-bold">Faster R-CNN</span> for aircraft detection in satellite imagery.</>,
   },
   {
     imageUrl: '/images/dengue.png',
