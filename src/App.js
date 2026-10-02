@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { HashRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { scrollTo, startSmoothScroll } from "./lib/smoothScroll";
 import Nav from "./components/Nav";
 import Profile from "./components/Profile";
 import Background from "./components/Background";
@@ -23,8 +24,13 @@ import BigDataML from "./components/projects/BigDataML";
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
+    scrollTo(0, { immediate: true });
   }, [pathname]);
+  return null;
+}
+
+function SmoothScroll() {
+  useEffect(() => startSmoothScroll(), []);
   return null;
 }
 
@@ -49,6 +55,7 @@ function Home() {
 function App() {
   return (
     <Router>
+      <SmoothScroll />
       <ScrollToTop />
       <Routes>
         <Route path="/campusmap" element={<CampusMap />} />

@@ -17,10 +17,10 @@ const projects = [
     tags: ['Unity', 'Game'],
   },
   {
-    title: 'CampusMap Game',
+    title: 'CampusMap',
     href: '/campusmap',
     image: '/images/campus-map.png',
-    blurb: 'Serious game built to explore Z_GIS and interact with real-time campus data in 3D.',
+    blurb: '3D digital twin built to explore Z_GIS and interact with real-time campus data.',
     tags: ['Unity', 'ArcGIS SDK'],
   },
   {

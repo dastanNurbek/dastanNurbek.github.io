@@ -1,5 +1,6 @@
 import React from 'react';
 import DotMatrix from './ui/DotMatrix';
+import { scrollTo } from '../lib/smoothScroll';
 import Reveal from './ui/Reveal';
 
 const links = [
@@ -74,7 +75,7 @@ const Footer = () => (
         <span className="hidden sm:block">Built with React</span>
         <button
           type="button"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={() => scrollTo(0)}
           className="transition-colors hover:text-accent"
         >
           Top ↑

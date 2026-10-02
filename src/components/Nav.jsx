@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import sections from '../lib/sections';
 import useActiveSection from '../hooks/useActiveSection';
+import { pauseScroll, resumeScroll, scrollTo } from '../lib/smoothScroll';
 import DotMatrix from './ui/DotMatrix';
 
 const IDS = sections.map((s) => s.id);
@@ -15,9 +16,7 @@ const social = [
 
 export const scrollToSection = (id) => {
   const el = document.getElementById(id);
-  if (!el) return;
-  const top = el.getBoundingClientRect().top + window.pageYOffset - BAR;
-  window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+  if (el) scrollTo(el, { offset: -BAR });
 };
 
 /* 2x2 dot glyph that becomes a cross when the index is open */
@@ -71,8 +70,11 @@ const Nav = () => {
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
+    if (open) pauseScroll();
+    else resumeScroll();
     return () => {
       document.body.style.overflow = '';
+      resumeScroll();
     };
   }, [open]);
 
@@ -94,7 +96,7 @@ const Nav = () => {
         <div className="shell flex h-14 items-center justify-between">
           <button
             type="button"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() => scrollTo(0)}
             className="flex items-center gap-3 text-fg transition-colors hover:text-accent"
             aria-label="Back to top"
           >
@@ -138,6 +140,7 @@ const Nav = () => {
       <AnimatePresence>
         {open && (
           <motion.nav
+            data-lenis-prevent
             className="panel panel-dark dotfield fixed inset-0 z-40 overflow-y-auto pt-16"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
