@@ -1,6 +1,14 @@
 // Project index. `external` entries open off-site, the rest route to a detail page.
 const projects = [
   {
+    title: 'WorldWeaver Fire',
+    href: 'https://github.com/dastanNurbek/worldweaver-fire',
+    external: true,
+    image: '/images/worldweaver-fire.png',
+    blurb: 'A WorldWeaver fork that spreads wildfire across open geodata with a shortest-path flammability model, rendering pre- and post-fire pairs as synthetic training data.',
+    tags: ['Blender', 'Python'],
+  },
+  {
     title: 'Synthetic Data',
     href: 'https://github.com/dastanNurbek/unity_augmentation',
     external: true,
