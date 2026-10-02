@@ -1,109 +1,48 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import Section from './ui/Section';
+import Reveal from './ui/Reveal';
 
-// 1. Data Setup - Flattened for easy filtering
-const allSkills = [
-  { name: "Python", category: "Languages" },
-  { name: "PySpark", category: "Frameworks" },
-  { name: "ArcGIS", category: "Tools" },
-  { name: "R", category: "Languages" },
-  { name: "Flutter", category: "Frameworks" },
-  { name: "eCognition", category: "Tools" },
-  { name: "C#", category: "Languages" },
-  { name: "TorchGeo", category: "Frameworks" },
-  { name: "SNAP", category: "Tools" },
-  { name: "React", category: "Frameworks" },
-  { name: "Blender", category: "Tools" },
-  { name: "Java", category: "Languages" },
-  { name: "QGIS", category: "Tools" },
-  { name: "Dart", category: "Languages" },
-  { name: "PyTorch", category: "Frameworks" },
-  { name: "GAML", category: "Languages" },
-  { name: "GAMA", category: "Tools" },
-  { name: "MLlib", category: "Frameworks" },
-  { name: "Unity", category: "Tools" },
+const groups = [
+  {
+    label: 'Languages',
+    items: ['Python', 'R', 'C#', 'Java', 'Dart', 'GAML'],
+  },
+  {
+    label: 'Frameworks',
+    items: ['PyTorch', 'TorchGeo', 'PySpark', 'MLlib', 'React', 'Flutter'],
+  },
+  {
+    label: 'Tools',
+    items: ['Unity', 'ArcGIS', 'QGIS', 'eCognition', 'SNAP', 'GAMA', 'Blender'],
+  },
 ];
 
-// 2. Color Configuration
-const categoryColors = {
-  Languages: "bg-blue-100 text-blue-800 border-blue-200 hover:bg-blue-200",
-  Frameworks: "bg-purple-100 text-purple-800 border-purple-200 hover:bg-purple-200",
-  Tools: "bg-emerald-100 text-emerald-800 border-emerald-200 hover:bg-emerald-200",
-};
+const Skills = () => (
+  <Section id="skills" index="05" label="Skills" tone="light">
+    <div>
+      {groups.map((g, i) => (
+        <Reveal key={g.label} delay={i * 0.06}>
+          <div className="grid grid-cols-1 gap-x-10 gap-y-4 border-t border-line py-8 md:grid-cols-[9rem_1fr]">
+            <div className="flex items-baseline gap-3">
+              <span className="font-mono text-2xs text-accent">{String(i + 1).padStart(2, '0')}</span>
+              <h3 className="font-mono text-2xs uppercase tracking-label text-muted">{g.label}</h3>
+            </div>
 
-const Skills = () => {
-  const [filter, setFilter] = useState('All');
-
-  // Filter logic
-  const filteredSkills = filter === 'All' 
-    ? allSkills 
-    : allSkills.filter(skill => skill.category === filter);
-
-  // Categories for buttons
-  const categories = ['All', 'Languages', 'Frameworks', 'Tools'];
-
-  return (
-    <div id="skills" className="max-w-[1200px] mx-auto w-full py-10">
-      <div className="grid md:grid-cols-3 gap-8 h-full">
-        
-        {/* --- Left Column: Title (Preserved Original Style) --- */}
-        <div className="col-span-1">
-           <h1 className="uppercase font-bold text-lg sm:text-xl tracking-wider px-10 pb-6 sticky top-20">
-             Skills
-           </h1>
-        </div>
-
-        {/* --- Right Column: Filters & Grid --- */}
-        <div className="col-span-1 md:col-span-2 px-10 sm:px-0 sm:pr-20">
-          
-          {/* Filter Buttons */}
-          <div className="flex flex-wrap gap-3 mb-8">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setFilter(cat)}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 border
-                  ${filter === cat 
-                    ? "bg-gray-800 text-white border-gray-800 shadow-md transform scale-105" 
-                    : "bg-white text-gray-600 border-gray-300 hover:bg-gray-100"
-                  }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-
-          {/* Skills Grid */}
-          <motion.div 
-            layout 
-            className="flex flex-wrap gap-3"
-          >
-            <AnimatePresence mode='popLayout'>
-              {filteredSkills.map((skill) => (
-                <motion.div
-                  layout
-                  key={skill.name}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.3 }}
-                  className={`px-4 py-2 rounded-lg border text-sm font-semibold shadow-sm cursor-default transition-colors ${categoryColors[skill.category]}`}
+            <ul className="flex flex-wrap gap-x-2 gap-y-2">
+              {g.items.map((item) => (
+                <li
+                  key={item}
+                  className="border border-line px-3.5 py-2 font-mono text-sm text-soft transition-colors duration-300 hover:border-accent hover:text-fg"
                 >
-                  {skill.name}
-                </motion.div>
+                  {item}
+                </li>
               ))}
-            </AnimatePresence>
-          </motion.div>
-          
-          {/* Empty State Helper (Just in case) */}
-          {filteredSkills.length === 0 && (
-            <p className="text-gray-400 text-sm italic pt-4">No skills found for this category.</p>
-          )}
-        </div>
-
-      </div>
+            </ul>
+          </div>
+        </Reveal>
+      ))}
     </div>
-  );
-};
+  </Section>
+);
 
 export default Skills;

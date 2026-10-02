@@ -1,107 +1,116 @@
 import React from 'react';
+import ProjectLayout from './ProjectLayout';
 
-const script = `
-    //VERSION=3
-    // Burned area detection
-    // Author: Monja B. Šebela
-    function setup() {
-      return {
-        input: ["B02", "B03", "B04", "B08", "B11", "B12", "dataMask"],
-        output: { bands: 4 }
-      };
-    }
+const script = `//VERSION=3
+// Burned area detection
+// Author: Monja B. Šebela
+function setup() {
+  return {
+    input: ["B02", "B03", "B04", "B08", "B11", "B12", "dataMask"],
+    output: { bands: 4 }
+  };
+}
 
-    function evaluatePixel(samples) {
-      var NDWI = index(samples.B03, samples.B08);
-      var NDVI = index(samples.B08, samples.B04);
-      var INDEX = ((samples.B11 - samples.B12) / (samples.B11 + samples.B12)) + (samples.B08);
+function evaluatePixel(samples) {
+  var NDWI = index(samples.B03, samples.B08);
+  var NDVI = index(samples.B08, samples.B04);
+  var INDEX = ((samples.B11 - samples.B12) / (samples.B11 + samples.B12)) + (samples.B08);
 
-      if ((INDEX > 0.1) || (samples.B02 > 0.1) || (samples.B11 < 0.1) || (NDVI > 0.3) || (NDWI > 0.1)) {
-        return [2.5 * samples.B04, 2.5 * samples.B03, 2.5 * samples.B02, samples.dataMask];
-      } else {
-        return [1, 0, 0, samples.dataMask];
-      }
-    }
-  `;
+  if ((INDEX > 0.1) || (samples.B02 > 0.1) || (samples.B11 < 0.1) || (NDVI > 0.3) || (NDWI > 0.1)) {
+    return [2.5 * samples.B04, 2.5 * samples.B03, 2.5 * samples.B02, samples.dataMask];
+  } else {
+    return [1, 0, 0, samples.dataMask];
+  }
+}`;
 
-const EOBrowser = () => {
-  return (
-    <div className="max-w-[800px] mx-auto w-full px-4 py-8">
-        <h1 className="text-2xl font-bold uppercase mb-10 text-center">EO-Browser: Custom Scripts</h1>
+const EOBrowser = () => (
+  <ProjectLayout
+    title="Wildfire assessment with custom scripts in EO Browser"
+    subtitle="Burnt-area detection over the Abai region, Kazakhstan, using a multispectral custom script on Sentinel-2 Level-1C data."
+    meta={[
+      { k: 'Platform', v: 'EO Browser' },
+      { k: 'Data', v: 'Sentinel-2 L1C' },
+      { k: 'Area', v: 'Abai region, Kazakhstan' },
+      { k: 'Event', v: 'Wildfires, June 2023' },
+    ]}
+  >
+    <h2>Introduction</h2>
+    <p>
+      The aim of the exercise is to investigate the custom script functionality of EO Browser by
+      implementing JavaScript from the custom-scripts GitHub repository.
+    </p>
 
+    <h2>Methods</h2>
+    <p>
+      The Burned Area Multispectral script, used for wildfire detection, was chosen for this experiment. It
+      uses Sentinel-2 Level-1C data and applies the Normalized Difference Vegetation Index (NDVI), the
+      Normalized Difference Moisture Index (NDMI) and custom band math over bands 12, 11 and 8. These bands
+      were chosen because they all have low reflectance on recently burned areas (Monja Šebela). The script
+      uses an if statement for different values per pixel and creates a mask if the value falls in the given
+      range.
+    </p>
 
-        <h1 className="text-xl font-bold mb-4 text-center">Introduction</h1>
-        <p>
-            &nbsp;&nbsp;&nbsp;&nbsp;The aim of the exercise is to investigate 
-            custom script functionality of EO-Browser by implementing a JavaScript 
-            code from custom-scripts GitHub repository.
-        </p>
+    <pre>
+      <code>{script}</code>
+    </pre>
 
+    <p>
+      The Abai region in Kazakhstan was chosen as the area of interest, to evaluate the area of wildfires
+      that took place in June 2023.
+    </p>
 
-        <h1 className="text-xl font-bold mb-4 mt-10 text-center">Methods</h1>
-        <p className='mb-4'>
-            &nbsp;&nbsp;&nbsp;&nbsp;Burned Area Multispectral script, used 
-            for wildfire detection, was chosen for this experiment. It uses 
-            Sentinel-2 Level-1C data and applies Normalized Difference Vegetation 
-            Index (NDVI), Normalized Difference Moisture Index (NDMI), and custom 
-            band math using bands 12, 11, and 8. These bands were chosen because 
-            they all have low reflectance on recently burned areas (Monja Šebela). The 
-            script uses an if statement for different values for each pixel and creates 
-            a mask if the value falls in the given range.
-        </p>
-            
-        <pre>
-            <code className='text-xs inline-flex text-left items-center space-x-4 bg-gray-800 text-white rounded-lg p-2 pl-2'>{script}</code>
-        </pre>
+    <h2>Results</h2>
+    <p>
+      As seen in Figure 1, in true colour images the burnt areas are visibly darker, linked to the wildfires
+      that took place from 8 to 13 June.
+    </p>
 
-        <p className='mb-2 mt-4'>
-            &nbsp;&nbsp;&nbsp;&nbsp;Abai Region in Kazakhstan was chosen as the 
-            area of interest to evaluate the area of wildfires that took place in June 2023. (Wikipedia).
-        </p>
+    <figure className="my-10">
+      <div className="grid grid-cols-2 gap-4">
+        <img src="/images/eo-1.jpg" alt="Sentinel-2 L1C scene of eastern Abai region, 1 August" />
+        <img src="/images/eo-2.jpg" alt="Sentinel-2 L1C scene of eastern Abai region, 14 August" />
+      </div>
+      <figcaption>
+        Figure 1 — S2 L1C scenes of the eastern Abai region. Acquisition 01-08-2025 (left), 14-08-2025
+        (right).
+      </figcaption>
+    </figure>
 
+    <p>
+      The wildfire evaluation results shown in Figure 2 indicate that this method is generally reliable in
+      detecting wildfires. It is necessary to validate the results against other methods and sources, but it
+      is a useful script for identifying forest fires without evaluating the precise area.
+    </p>
 
-        <h1 className="text-xl font-bold mb-4 mt-10 text-center">Results</h1>
-        <p className='mb-4'>
-            &nbsp;&nbsp;&nbsp;&nbsp;As seen in Figure 1, in true color images 
-            the burnt areas are visibly darker, linked to the wildfires taken 
-            place from June 8, 2024, to June 13, 2024.
-        </p>
+    <figure className="my-10">
+      <img src="/images/eo-3.jpg" alt="Custom script output highlighting burnt area" />
+      <figcaption>Figure 2 — custom script result.</figcaption>
+    </figure>
 
-        <div className="mt-2 grid grid-cols-2 gap-4 justify-items-center">
-            <img src="/images/eo-1.jpg" alt="Traffic Emission Simulation" className="container md:max-w-xs" />
-            <img src="/images/eo-2.jpg" alt="Traffic Emission Simulation" className="container md:max-w-xs" />
-        </div>
-            
-        <div className='justify-items-center'>
-            <p className='mb-2'>
-                Figure 1. S2 L1C images of eastern Abai Region. Acquisition date: 01-08-2025 (left), 14-08-2025 (right).
-            </p >
-        </div>
-
-        <p className='mb-4 mt-4'>
-            &nbsp;&nbsp;&nbsp;&nbsp;The wildfire evaluation results shown in 
-            Figure 2, indicate that this method is generally reliable in detecting 
-            wildfires.  It is necessary to validate the results with other methods 
-            and sources. However, it is a useful script for only identifying forest 
-            fires without evaluating the precise area.
-        </p>
-
-        <div className="justify-items-center">
-            <img src="/images/eo-3.jpg" alt="Traffic Emission Simulation" className="container md:max-w-sm" />
-            <p className='mb-2'>
-            Figure 2. Custom script result.
-            </p >
-        </div>
-
-        <h1 className="text-xl font-bold mb-4 mt-10 text-center">References</h1>
-        <p className='mb-2'>
-            &nbsp;&nbsp;&nbsp;&nbsp;Monja Šebela. (2020). GitHub Repository. <a className='underline decoration-sky-500' href='https://github.com/sentinel-hub/custom-scripts/tree/main/sentinel-2/burned_area_ms'>Link</a>
-        </p>
-        <p className='mb-2'>
-            &nbsp;&nbsp;&nbsp;&nbsp;2023 Kazakhstan wildfires. (2024, 07, 01). In Wikipedia. <a className='underline decoration-sky-500' href='https://en.wikipedia.org/wiki/2023_Kazakhstan_wildfires'>Link</a>
-        </p>
-    </div>
-  );
-};
+    <h2>References</h2>
+    <ul>
+      <li>
+        Monja Šebela (2020). GitHub repository.{' '}
+        <a
+          href="https://github.com/sentinel-hub/custom-scripts/tree/main/sentinel-2/burned_area_ms"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Link
+        </a>
+      </li>
+      <li>
+        2023 Kazakhstan wildfires (2024). In Wikipedia.{' '}
+        <a
+          href="https://en.wikipedia.org/wiki/2023_Kazakhstan_wildfires"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Link
+        </a>
+      </li>
+    </ul>
+  </ProjectLayout>
+);
 
 export default EOBrowser;

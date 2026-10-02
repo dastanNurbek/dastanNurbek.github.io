@@ -2,15 +2,335 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    background-color: #fbfbfe;
+/* ------------------------------------------------------------------
+   Tokens
+   One theme, no toggle. Colour lives on panels: each section declares its
+   own ground and every component reads the same token names, so a panel
+   swap re-colours everything inside it.
+------------------------------------------------------------------ */
+:root {
+    --n-dark-bg: #000000;
+    --n-dark-surface: #141414;
+    --n-dark-fg: #ffffff;
+    --n-dark-soft: #e3e3e3;
+    --n-dark-muted: #a8a8a8;
+    --n-dark-faint: #737373;
+    --n-dark-line: #2e2e2e;
+    --n-dark-accent: #7cb3ff;
+
+    --n-light-bg: #ffffff;
+    --n-light-surface: #ededed;
+    --n-light-fg: #000000;
+    --n-light-soft: #262626;
+    --n-light-muted: #575757;
+    --n-light-faint: #8d8d8d;
+    --n-light-line: #d8d8d8;
+    --n-light-accent: #1d4ed8;
+
+    /* Chrome is dark by default: the bar, the index overlay, the hero. */
+    --n-bg: var(--n-dark-bg);
+    --n-surface: var(--n-dark-surface);
+    --n-fg: var(--n-dark-fg);
+    --n-soft: var(--n-dark-soft);
+    --n-muted: var(--n-dark-muted);
+    --n-faint: var(--n-dark-faint);
+    --n-line: var(--n-dark-line);
+    --n-accent: var(--n-dark-accent);
+    --n-on-accent: #000000;
+    --n-dot-off: rgba(255, 255, 255, 0.16);
+    --n-bg-blur: rgba(0, 0, 0, 0.8);
 }
 
-.slick-prev:before {
-    color: rgb(0, 0, 0) !important;
-    background-color: #eeeeee00;
+/* A panel paints its ground and redefines the tokens for everything inside. */
+.panel {
+    background-color: var(--n-bg);
+    color: var(--n-fg);
 }
-.slick-next:before {
-    color: rgb(0, 0, 0) !important;
-    background-color: #eeeeee00;
+
+.panel-dark {
+    --n-bg: var(--n-dark-bg);
+    --n-surface: var(--n-dark-surface);
+    --n-fg: var(--n-dark-fg);
+    --n-soft: var(--n-dark-soft);
+    --n-muted: var(--n-dark-muted);
+    --n-faint: var(--n-dark-faint);
+    --n-line: var(--n-dark-line);
+    --n-accent: var(--n-dark-accent);
+    --n-on-accent: #000000;
+    --n-dot-off: rgba(255, 255, 255, 0.16);
+}
+
+.panel-light {
+    --n-bg: var(--n-light-bg);
+    --n-surface: var(--n-light-surface);
+    --n-fg: var(--n-light-fg);
+    --n-soft: var(--n-light-soft);
+    --n-muted: var(--n-light-muted);
+    --n-faint: var(--n-light-faint);
+    --n-line: var(--n-light-line);
+    --n-accent: var(--n-light-accent);
+    --n-on-accent: #ffffff;
+    --n-dot-off: rgba(0, 0, 0, 0.14);
+}
+
+.panel-grey {
+    --n-bg: #f1f1f1;
+    --n-surface: #e4e4e4;
+    --n-fg: var(--n-light-fg);
+    --n-soft: var(--n-light-soft);
+    --n-muted: var(--n-light-muted);
+    --n-faint: #8a8a8a;
+    --n-line: #d5d5d5;
+    --n-accent: var(--n-light-accent);
+    --n-on-accent: #ffffff;
+    --n-dot-off: rgba(0, 0, 0, 0.14);
+}
+
+@layer base {
+    * {
+        border-radius: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+        background-color: var(--n-bg);
+        color: var(--n-fg);
+        font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+        background: var(--n-accent);
+        color: var(--n-on-accent);
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: var(--n-bg);
+    }
+    ::-webkit-scrollbar-thumb {
+        background: var(--n-faint);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--n-accent);
+    }
+
+    :focus-visible {
+        outline: 1px solid var(--n-accent);
+        outline-offset: 3px;
+    }
+}
+
+@layer components {
+    /* Technical caps label — the workhorse of the layout */
+    .label {
+        @apply font-mono text-2xs uppercase tracking-label text-muted;
+    }
+
+    .shell {
+        @apply mx-auto w-full max-w-page px-6 md:px-10;
+    }
+
+    /* Dot-matrix field, echoing the glyph grid */
+    .dotfield {
+        background-image: radial-gradient(var(--n-dot-off) 1px, transparent 1px);
+        background-size: 10px 10px;
+        background-position: 0 0;
+    }
+
+    .n-underline {
+        @apply relative inline-block;
+        background-image: linear-gradient(var(--n-fg), var(--n-fg));
+        background-repeat: no-repeat;
+        background-size: 0% 1px;
+        background-position: 0 100%;
+        transition: background-size 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .n-underline:hover {
+        background-size: 100% 1px;
+    }
+
+    /* Long-form content inside project pages */
+    .prose-n {
+        @apply text-base leading-[1.8] text-soft;
+    }
+    .prose-n h2 {
+        @apply mt-16 mb-5 font-mono text-2xs uppercase tracking-label text-muted;
+    }
+    .prose-n h3 {
+        @apply mt-10 mb-3 text-lg font-medium tracking-tight text-fg;
+    }
+    .prose-n h4 {
+        @apply mt-8 mb-2 font-mono text-2xs uppercase tracking-label text-muted;
+    }
+    .prose-n p {
+        @apply mb-5;
+    }
+    .prose-n strong {
+        @apply font-medium text-fg;
+    }
+    .prose-n ul,
+    .prose-n ol {
+        @apply mb-5 space-y-2 pl-0;
+    }
+    .prose-n ul > li {
+        @apply relative pl-5;
+    }
+    .prose-n ul > li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.7em;
+        width: 4px;
+        height: 4px;
+        background: var(--n-accent);
+    }
+    .prose-n ol {
+        @apply list-decimal pl-5;
+    }
+    .prose-n a {
+        @apply text-fg underline decoration-accent decoration-1 underline-offset-4 transition-colors hover:text-accent;
+    }
+    /* Figures sit on a white plate, so charts drawn on white read as deliberate */
+    .prose-n img {
+        @apply w-full border border-line;
+        background: #ffffff;
+        padding: 8px;
+    }
+    .prose-n table {
+        @apply w-full border-collapse font-mono text-sm;
+    }
+    .prose-n th {
+        @apply border-b border-line py-3 text-left font-medium uppercase tracking-label text-muted;
+    }
+    .prose-n td {
+        @apply border-b border-line py-3;
+    }
+    .prose-n pre {
+        @apply mb-6 overflow-x-auto border border-line bg-surface p-5 font-mono text-[13px] leading-relaxed;
+    }
+    .prose-n code {
+        @apply font-mono text-[0.9em];
+    }
+    .prose-n blockquote {
+        @apply my-6 border-l border-accent pl-5 text-muted;
+    }
+    .prose-n figcaption {
+        @apply mt-3 font-mono text-2xs uppercase tracking-label text-muted;
+    }
+
+    /* Translucent bar that sits over scrolling content */
+    .nav-blur {
+        background: var(--n-bg-blur);
+        backdrop-filter: blur(14px) saturate(140%);
+        -webkit-backdrop-filter: blur(14px) saturate(140%);
+    }
+}
+
+/* ------------------------------------------------------------------
+   Carousel (react-slick)
+   Scoped under .n-carousel so these rules outrank slick-theme.css,
+   which webpack emits after this file.
+------------------------------------------------------------------ */
+.n-carousel {
+    position: relative;
+    padding-bottom: 3.5rem;
+}
+/* The dots are absolute against .slick-slider, so clear the theme's own margin
+   and drop them into the padding below the frame. */
+.n-carousel .slick-slider {
+    margin-bottom: 0;
+}
+
+.n-carousel .slick-prev,
+.n-carousel .slick-next {
+    width: 32px;
+    height: 32px;
+    z-index: 10;
+}
+.n-carousel .slick-prev {
+    left: -44px;
+}
+.n-carousel .slick-next {
+    right: -44px;
+}
+.n-carousel .slick-prev:before,
+.n-carousel .slick-next:before {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 18px;
+    line-height: 1;
+    color: var(--n-fg);
+    opacity: 0.45;
+    transition: opacity 0.2s ease, color 0.2s ease;
+}
+.n-carousel .slick-prev:before {
+    content: '\2190';
+}
+.n-carousel .slick-next:before {
+    content: '\2192';
+}
+.n-carousel .slick-prev:hover:before,
+.n-carousel .slick-next:hover:before {
+    opacity: 1;
+    color: var(--n-accent);
+}
+
+.n-carousel .slick-dots {
+    bottom: -2.25rem;
+    height: auto;
+    line-height: 0;
+}
+.n-carousel .slick-dots li,
+.n-carousel .slick-dots li button {
+    width: 16px;
+    height: 16px;
+}
+/* The dots list sits inside .prose-n, so opt it out of the prose list styling */
+.n-carousel .slick-dots li {
+    position: relative;
+    margin: 0 4px !important;
+    padding: 0 !important;
+}
+.n-carousel .slick-dots li::before {
+    content: none !important;
+}
+.n-carousel .slick-dots li button {
+    padding: 0;
+}
+.n-carousel .slick-dots li button:before {
+    content: '';
+    top: 5px;
+    left: 5px;
+    width: 6px;
+    height: 6px;
+    background: var(--n-faint);
+    opacity: 1;
+    border-radius: 0;
+    transition: background 0.2s ease;
+}
+.n-carousel .slick-dots li.slick-active button:before {
+    background: var(--n-accent);
+}
+
+@media (max-width: 900px) {
+    .n-carousel .slick-prev {
+        left: 6px;
+    }
+    .n-carousel .slick-next {
+        right: 6px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
 }

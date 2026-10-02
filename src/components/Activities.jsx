@@ -1,189 +1,136 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import React from 'react';
+import Section from './ui/Section';
+import Reveal from './ui/Reveal';
+import Disclosure from './ui/Disclosure';
 
-function Activities() {
-  const [showISSonVIS, setShowISSonVIS] = useState(false);
-  const [showAI4EO, setShowAI4EO] = useState(false);
-  const [showAI4EO2026, setShowAI4EO2026] = useState(false);
+const groups = [
+  {
+    label: 'Presentations',
+    items: [
+      {
+        title: 'The 17th International Coastal Symposium',
+        org: 'The Journal of Coastal Research',
+        place: 'Doha',
+        year: '2024',
+        presenter: true,
+        summary:
+          "Poster presentation accepted on the research paper 'Wave climate analysis of Lake Balkhash using altimetry data'.",
+      },
+      {
+        title: 'FARABI ALEMI 2023',
+        org: 'Al-Farabi Kazakh National University',
+        place: 'Almaty',
+        year: '2023',
+        presenter: true,
+        summary:
+          "Thesis on 'Observing long-term NOx trends in Almaty city using satellite retrievals' was published and awarded third place.",
+      },
+      {
+        title: 'AIAC AUES',
+        org: 'Almaty University of Power Engineering and Telecommunications',
+        place: 'Almaty',
+        year: '2023',
+        presenter: true,
+        summary:
+          "Spoke on the abstract thesis 'Observing long-term NOx trends in Almaty city using satellite retrievals'.",
+      },
+    ],
+  },
+  {
+    label: 'Schools & symposia',
+    items: [
+      {
+        title: 'AI4EO Spring School 2026',
+        org: 'International Spring School on AI for Earth Observation',
+        place: 'Vannes, Brittany',
+        year: '2026',
+        details: [
+          'Participated in and helped organise the AI4EO Spring School in Vannes. The programme featured lectures and hands-on sessions on foundation models, MLOps, responsible AI and generative models, alongside a data-driven project from Φ-lab.',
+        ],
+      },
+      {
+        title: 'AI4EO 2025',
+        org: 'International Symposium on AI for Earth Observation',
+        place: 'Rennes, Brittany',
+        year: '2025',
+        details: [
+          'The symposium held in Rennes on 11–12 September deepened my understanding of artificial intelligence for Earth observation. Four keynote speakers presented work on forestry, foundation models, bias mitigation and digital twins.',
+          'I gained new perspectives on self-supervised learning and multi-modal approaches, and specifically explored the SSL4Eco dataset and research on super-resolution of GOME-2 data for improved precision in atmospheric studies.',
+        ],
+      },
+      {
+        title: 'ISSonVIS 2025',
+        org: 'International Spring School on Visualization',
+        place: 'Palacký University Olomouc',
+        year: '2025',
+        details: [
+          'Over two days I gained a broad understanding of how maps and visual data can be powerful tools for both conveying truth and spreading misinformation. Sessions covered trust in maps, perception design and psychology.',
+          'The course also emphasised ethical considerations in map-making and explored the growing role of AI in both creating and combating disinformation.',
+        ],
+      },
+    ],
+  },
+];
 
-  const fadeIn = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.6 } },
-  };
-
-  const ConferenceItem = ({ 
-    title, 
-    organization, 
-    description, 
-    location, 
-    year, 
-    isPresentation, 
-    details, 
-    showDetails, 
-    setShowDetails 
-  }) => (
-    <div className="mb-10 last:mb-0">
-      <div className="flex items-start gap-2">
-        <h1 className="leading-tight">
-          <span className="font-bold">{title}</span>, {organization}
-        </h1>
-        {isPresentation && (
-          <span className="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-full tracking-tighter shrink-0 mt-0.5">
+const Item = ({ item }) => (
+  <article className="group border-t border-line py-8">
+    <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+      <div className="flex items-center gap-3">
+        {item.presenter && (
+          <span className="border border-accent px-2 py-1 font-mono text-2xs uppercase tracking-label text-accent">
             Presenter
           </span>
         )}
+        <span className="font-mono text-2xs uppercase tracking-label text-muted">{item.place}</span>
       </div>
-      
-      {description && <p className="py-2 text-sm">{description}</p>}
-      
-      {details && (
-        <div className="pt-2">
-          <button
-            onClick={() => setShowDetails(!showDetails)}
-            className="flex items-center gap-2 mb-4 text-sm text-gray-400 hover:text-gray-600 transition-colors"
-          >
-            Details
-            {showDetails ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-          </button>
-          
-          <AnimatePresence>
-            {showDetails && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="overflow-hidden"
-              >
-                <div className="pb-4 space-y-3 text-gray-500">
-                  {details}
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      )}
-      
-      <p className="text-xs text-gray-400">{location}, {year}</p>
+      <span className="font-mono text-2xs uppercase tracking-label text-muted">{item.year}</span>
     </div>
-  );
 
-  return (
-    <div id="activities" className="max-w-[1200px] mx-auto w-full py-12">
-      <div className="grid md:grid-cols-3 gap-8 h-full">
-        <h1 className="uppercase font-bold text-lg sm:text-xl tracking-wider px-10 pb-6">
-          Activities
-        </h1>
+    <h4 className="mt-4 max-w-[34ch] text-lg font-light leading-tight tracking-tight text-fg md:text-2xl">
+      {item.title}
+    </h4>
+    <p className="mt-2 font-mono text-2xs uppercase tracking-label text-faint">{item.org}</p>
 
-        <motion.div
-          className="px-10 sm:pl-20 text-sm col-span-2"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeIn}
-        >
-          {/* Section: Presentations */}
-          <ConferenceItem 
-            title="The 17th International Coastal Symposium"
-            organization="The Journal of Coastal Research (JCR)"
-            description="Poster presentation was accepted based on a research paper 'Wave climate analysis of Lake Balkhash using altimetry data'"
-            location="Doha"
-            year="2024"
-            isPresentation={true}
-          />
+    {item.summary && (
+      <p className="mt-5 max-w-read leading-relaxed text-soft">{item.summary}</p>
+    )}
 
-          <ConferenceItem 
-            title="FARABI ALEMI 2023"
-            organization="Al-Farabi Kazakh National University"
-            description="Thesis on 'Observing long-term NOx trends in Almaty city using satellite retrievals' was published and awarded third place."
-            location="Almaty"
-            year="2023"
-            isPresentation={true}
-          />
-
-          <ConferenceItem 
-            title="AIAC AUES"
-            organization="Almaty University of Power Engineering and Telecommunications"
-            description="Participated as a speaker on abstract thesis 'Observing long-term NOx trends in Almaty city using satellite retrievals'."
-            location="Almaty"
-            year="2023"
-            isPresentation={true}
-          />
-
-          {/* Section: Professional Courses/Symposiums */}
-          <div className="border-t border-gray-800 my-10 pt-10">
-            <ConferenceItem 
-              title="AI4EO Spring School 2026"
-              organization="International Spring School on AI for Earth Observation"
-              location="Vannes, Britanny, France"
-              year="2026"
-              isPresentation={false}
-              showDetails={showAI4EO2026}
-              setShowDetails={setShowAI4EO2026}
-              details={
-                <>
-                  <p>
-                    Participated and helped to organize the AI4EO Spring School in Vannes. The 
-                    program featured lectures and hands-on sessions on foundation models, MLOps, Responsible 
-                    AI and generative models, as well as a data-driven project from Phi-Lab.
-                  </p>  
-                </>
-              }
-            />
-
-            <ConferenceItem 
-              title="AI4EO 2025"
-              organization="International Symposium on AI for Earth Observation"
-              location="Rennes, Britanny, France"
-              year="2025"
-              isPresentation={false}
-              showDetails={showAI4EO}
-              setShowDetails={setShowAI4EO}
-              details={
-                <>
-                  <p>
-                    The AI4EO Symposium held in Rennes on September 11–12 was a great experience 
-                    that deepened my understanding of artificial intelligence for Earth Observation. The 
-                    program featured four keynote speakers who presented their work on forestry, 
-                    foundation models, bias mitigation, and digital twins.
-                  </p>
-                  <p>
-                    I gained new perspectives on self-supervised learning and multi-modal approaches. 
-                    I specifically explored the SSL4Eco dataset and research on super-resolution of 
-                    GOME-2 data for improved precision in atmospheric studies.
-                  </p>
-                </>
-              }
-            />
-
-            <ConferenceItem 
-              title="ISSonVIS 2025"
-              organization="International Spring School on Visualization"
-              location="Palacký University Olomouc"
-              year="2025"
-              isPresentation={false}
-              showDetails={showISSonVIS}
-              setShowDetails={setShowISSonVIS}
-              details={
-                <>
-                  <p>
-                    Over the course of two days, I gained a broad understanding of how maps and visual 
-                    data can be powerful tools for both conveying truth and spreading misinformation. 
-                    The sessions covered topics like trust in maps, perception design, and psychology.
-                  </p>
-                  <p>
-                    The course also emphasized ethical considerations in map-making and 
-                    explored the growing role of AI in both creating and combating disinformation.
-                  </p>
-                </>
-              }
-            />
+    {item.details && (
+      <div className="mt-6">
+        <Disclosure label="Details">
+          <div className="max-w-read space-y-4 leading-relaxed text-soft">
+            {item.details.map((d, i) => (
+              <p key={i}>{d}</p>
+            ))}
           </div>
-        </motion.div>
+        </Disclosure>
       </div>
+    )}
+  </article>
+);
+
+const Activities = () => (
+  <Section id="activities" index="07" label="Activities" tone="light">
+    <div className="space-y-16">
+      {groups.map((g, gi) => (
+        <div key={g.label}>
+          <div className="flex items-center gap-4">
+            <h3 className="font-mono text-2xs uppercase tracking-label text-accent">{g.label}</h3>
+            <span className="h-px flex-1 bg-line" />
+            <span className="font-mono text-2xs text-faint">{String(g.items.length).padStart(2, '0')}</span>
+          </div>
+
+          <div className="mt-6">
+            {g.items.map((item, i) => (
+              <Reveal key={item.title} delay={Math.min(i, 4) * 0.05 + gi * 0.03}>
+                <Item item={item} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
-  );
-}
+  </Section>
+);
 
 export default Activities;

@@ -1,69 +1,86 @@
 import React from 'react';
+import ProjectLayout from './ProjectLayout';
 
-const Sen2Cube = () => {
-  return (
-    <div className="max-w-[800px] mx-auto w-full px-4 py-8">
-        <h1 className="text-2xl font-bold uppercase mb-10 text-center">Sen2Cube.at: Water Area Calculation model</h1>
+const steps = [
+  {
+    src: '/images/sen-1.png',
+    alt: 'Concepts section defining water, cloud and ice entities',
+    text: 'In the concepts section, three entities are defined — water, cloud and ice — using the Color type.',
+  },
+  {
+    src: '/images/sen-2.png',
+    alt: 'Application section merging cloud and ice entities',
+    text: 'In the application section, the cloud and ice entities are merged first.',
+  },
+  {
+    src: '/images/sen-3.png',
+    alt: 'Water frequency computation',
+    text: 'The water entity then yields how frequently, as a percentage, water appeared on a given pixel across a collection of cloud-free and ice-free images.',
+  },
+  {
+    src: '/images/sen-4.png',
+    alt: 'Pixel counting and area evaluation',
+    text: 'Finally, pixels above the 25% threshold are counted and the water area is evaluated in square kilometres.',
+  },
+];
 
+const tests = [
+  { src: '/images/sen-5.png', name: 'Traunsee', estimated: '24.74 km²', truth: '24.5 km²' },
+  { src: '/images/sen-6.png', name: 'Mondsee', estimated: '14.18 km²', truth: '14.2 km²' },
+  { src: '/images/sen-7.png', name: 'Hallstätter See', estimated: '8.37 km²', truth: '8.55 km²' },
+  { src: '/images/sen-8.png', name: 'Lake Zell', estimated: '4.67 km²', truth: '4.55 km²' },
+];
 
-        <h1 className="text-xl font-bold mb-4 text-center">Model Description</h1>
-        <div className="justify-items-center">
-            <img src="/images/sen-1.png" alt="Traffic Emission Simulation" className="container md:max-w-sm" />
-        </div>
-        <p className='my-4'>
-            &nbsp;&nbsp;&nbsp;&nbsp;In the concepts section, we define three 
-            entities: water, cloud, and ice using Color type.
-        </p>
-        <div className="justify-items-center">
-            <img src="/images/sen-2.png" alt="Traffic Emission Simulation" className="container md:max-w-sm" />
-        </div>
-        <p className='my-4'>
-            &nbsp;&nbsp;&nbsp;&nbsp;In the application section, we first merge cloud and ice entities.
-        </p>
-        <div className="justify-items-center">
-            <img src="/images/sen-3.png" alt="Traffic Emission Simulation" className="container md:max-w-sm" />
-        </div>
-        <p className='my-4'>
-            &nbsp;&nbsp;&nbsp;&nbsp;After that we use the water entity to find how 
-            frequently (percentage) the water appeared on 
-            a given pixel in a collection of cloud-free and ice-free images.
-        </p>
-        <div className="justify-items-center">
-            <img src="/images/sen-4.png" alt="Traffic Emission Simulation" className="container md:max-w-sm" />
-        </div>
-        <p className='my-4'>
-            &nbsp;&nbsp;&nbsp;&nbsp;Finally, we count the pixels that were 
-            above the threshold of 25% and evaluate the water area in square kilometers.
-        </p>
+const Sen2Cube = () => (
+  <ProjectLayout
+    title="Water area calculation on Sen2Cube.at"
+    subtitle="A semantic EO data cube model that separates water from cloud and ice, then converts pixel frequency into surface area."
+    meta={[
+      { k: 'Platform', v: 'Sen2Cube.at' },
+      { k: 'Data', v: 'Sentinel-2' },
+      { k: 'Threshold', v: '25% water frequency' },
+      { k: 'Validation', v: '4 Austrian lakes' },
+    ]}
+  >
+    <h2>Model description</h2>
+    {steps.map((s) => (
+      <figure key={s.src} className="my-8">
+        <img src={s.src} alt={s.alt} />
+        <figcaption>{s.text}</figcaption>
+      </figure>
+    ))}
 
+    <h2>Test cases</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Lake</th>
+          <th>Estimated</th>
+          <th>Ground truth</th>
+        </tr>
+      </thead>
+      <tbody>
+        {tests.map((t) => (
+          <tr key={t.name}>
+            <td>{t.name}</td>
+            <td>{t.estimated}</td>
+            <td>{t.truth}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
 
-        <h1 className="text-xl font-bold mb-4 mt-10 text-center">Test Cases</h1>
-        <div className="justify-items-center">
-            <img src="/images/sen-5.png" alt="Traffic Emission Simulation" className="container md:max-w-sm" />
-        </div>
-        <p className='my-4'>
-            &nbsp;&nbsp;&nbsp;&nbsp;Traunsee. Estimated area: 24.74 km2, ground truth: 24.5 km2.
-        </p>
-        <div className="justify-items-center">
-            <img src="/images/sen-6.png" alt="Traffic Emission Simulation" className="container md:max-w-sm" />
-        </div>
-        <p className='my-4'>
-            &nbsp;&nbsp;&nbsp;&nbsp;Mondsee. Estimated area: 14.18 km2, ground truth: 14.2 km2.
-        </p>
-        <div className="justify-items-center">
-            <img src="/images/sen-7.png" alt="Traffic Emission Simulation" className="container md:max-w-sm" />
-        </div>
-        <p className='my-4'>
-            &nbsp;&nbsp;&nbsp;&nbsp;Hallstatter See. Estimated area: 8.37 km2, ground truth: 8.55 km2.
-        </p>
-        <div className="justify-items-center">
-            <img src="/images/sen-8.png" alt="Traffic Emission Simulation" className="container md:max-w-sm" />
-        </div>
-        <p className='my-4'>
-            &nbsp;&nbsp;&nbsp;&nbsp;Lake Zell. Estimated area: 4.67 km2, ground truth: 4.55 km2.
-        </p>
+    <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2">
+      {tests.map((t) => (
+        <figure key={t.src}>
+          <img src={t.src} alt={`Model output for ${t.name}`} />
+          <figcaption>
+            {t.name} — {t.estimated} estimated
+          </figcaption>
+        </figure>
+      ))}
     </div>
-  );
-};
+  </ProjectLayout>
+);
 
 export default Sen2Cube;

@@ -1,15 +1,14 @@
-import React from "react";
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from "./components/Navbar";
-import About from "./components/About";
+import React, { useEffect } from "react";
+import { HashRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import Nav from "./components/Nav";
+import Profile from "./components/Profile";
 import Background from "./components/Background";
-import Gap from "./components/Gap";
 import Experience from "./components/Experience";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Publications from "./components/Publications";
 import Activities from "./components/Activities";
-import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 import TrafficSimulation from "./components/projects/TrafficSimulation";
 import EOBrowser from "./components/projects/EOBrowser";
 import Sen2Cube from "./components/projects/Sen2cube";
@@ -20,9 +19,37 @@ import AircraftDetection from "./components/projects/AircraftDetection";
 import BigDataDL from "./components/projects/BigDataDL";
 import BigDataML from "./components/projects/BigDataML";
 
+// A hash route change keeps the old scroll position, so reset it by hand.
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
+function Home() {
+  return (
+    <>
+      <Nav />
+      <main>
+        <Profile />
+        <Background />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Publications />
+        <Activities />
+      </main>
+      <Footer />
+    </>
+  );
+}
+
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/campusmap" element={<CampusMap />} />
         <Route path="/traffic-emission-simulation" element={<TrafficSimulation />} />
@@ -33,27 +60,9 @@ function App() {
         <Route path="/aircraft-detection" element={<AircraftDetection />} />
         <Route path="/big-data-dl" element={<BigDataDL />} />
         <Route path="/big-data-ml" element={<BigDataML />} />
-        <Route path="/" element={
-          <div>
-            <Navbar />
-            <About />
-            <Background />
-            <Gap />
-            <Experience />
-            <Gap />
-            <Projects />
-            <Gap />
-            <Skills />
-            <Gap />
-            <Publications />
-            <Gap />
-            <Activities />
-            <Contact />
-          </div>}
-        />
+        <Route path="/" element={<Home />} />
       </Routes>
     </Router>
-
   );
 }
 

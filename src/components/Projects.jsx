@@ -1,175 +1,206 @@
-import React, { useState } from 'react';
-import ImageCard from './ImageCard';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import Section from './ui/Section';
+import projects from '../lib/projects';
 
-const INITIAL_COUNT = 6;
-const INCREMENT = 3;
+const INITIAL = 8;
 
-const projects = [
-  {
-    imageUrl: '/images/unity-augmentation.png',
-    linkUrl: 'https://github.com/dastanNurbek/unity_augmentation',
-    title: 'Synthetic Data',
-    description: <><span className="font-bold">Unity</span> generated synthetic satellite data for Deep Learning tasks. Study on Wildfire Classification.</>,
-  },
-  {
-    imageUrl: '/images/copernicus-laptop.png',
-    linkUrl: 'https://play.unity.com/en/games/6e97a30f-d1dc-494d-a115-77d721f6445c/copernicus',
-    title: 'Copurrnicus Game',
-    description: <>Educational game developed using <span className="font-bold">Unity</span> to promote EU's Copernicus and its Services.</>,
-  },
-  {
-    imageUrl: '/images/campus-map.png',
-    linkUrl: '#/campusmap',
-    title: 'CampusMap Game',
-    description: <>Serious game developed using <span className="font-bold">Unity</span> and <span className="font-bold">ArcGIS SDK</span> to explore Z_GIS and interact with real-time data.</>,
-  },
-  {
-    imageUrl: '/images/beyond-spectrum.png',
-    linkUrl: 'https://github.com/dastanNurbek/beyond-visible-spectrum-submission',
-    title: 'AI for Agriculture',
-    description: <>Kaggle submission for ICPR 2026 Competition on “Beyond Visible Spectrum: AI for Agriculture”. Using custom Neural Network architecture.</>,
-  },
-  {
-    imageUrl: '/images/big-data.png',
-    linkUrl: '#/big-data-dl',
-    title: 'Distributed DL',
-    description: <>Big Data project using <span className="font-bold">PySpark</span> for training a Unet model on BigEarthNet dataset.</>,
-  },
-  {
-    imageUrl: '/images/big-data.png',
-    linkUrl: '#/big-data-ml',
-    title: 'Distributed ML',
-    description: <>Big Data project using <span className="font-bold">PySpark</span> for training a Random Forest model on FRACTAL dataset.</>,
-  },
-  {
-    imageUrl: '/images/road-extraction.png',
-    linkUrl: 'https://github.com/dastanNurbek/torchgeo-road-extraction',
-    title: 'Road Extraction',
-    description: <>An in-depth <span className="font-bold">TorchGeo</span> tutorial for road extraction on DeepGlobe 2018 challenge dataset.</>,
-  },
-  {
-    imageUrl: '/images/aircraft-detection.png',
-    linkUrl: '#/aircraft-detection',
-    title: 'Aircraft Detection',
-    description: <>Deep Learning project using <span className="font-bold">YOLO</span> and <span className="font-bold">Faster R-CNN</span> for aircraft detection in satellite imagery.</>,
-  },
-  {
-    imageUrl: '/images/dengue.png',
-    linkUrl: '#/dengue-competition',
-    title: 'Dengue AI',
-    description: <>Machine Learning project using <span className="font-bold">Scikit-learn</span> Random Forest aimed at predicting future Dengue fever outbreaks.</>,
-  },
-  {
-    imageUrl: '/images/traffic.png',
-    linkUrl: '#/traffic-emission-simulation',
-    title: 'Spatial Simulation',
-    description: <>Research project as part of Spatial Simulation course dedicated to studying the Traffic Emission impacts on Air Quality in Paris using <span className="font-bold">GAMA</span>.</>,
-  },
-  {
-    imageUrl: '/images/displacement.png',
-    linkUrl: 'https://earth.google.com/earth/d/1cPCmIYKlfh73nHOM7u8IRuLH059doEWs?usp=sharing',
-    title: 'Earthquake Displacement Map',
-    description: <>Displacement Map of Japanese Earthquake 2024 in <span className="font-bold">SNAP</span> platform as part an exercise for the course Advanced Remote Sensing.</>,
-  },
-  {
-    imageUrl: '/images/segmentation.png',
-    linkUrl: '#/segmentation',
-    title: 'eCognition vs. Open-source',
-    description: <>Assignment project as part of Advanced Remote Sensing course focused on comparing <span className="font-bold">eCognition</span> and <span className="font-bold">Python</span> segmentation tools.</>,
-  },
-  {
-    imageUrl: '/images/sen2cube.png',
-    linkUrl: '#/sen2cube',
-    title: 'Water Area Calculator',
-    description: <>Water Area Calculation model made in <span className="font-bold">Sen2Cube.at</span> platform.</>,
-  },
-  {
-    imageUrl: '/images/gee-flood.png',
-    linkUrl: 'https://ee-dastannurbek22.projects.earthengine.app/view/ural-river-flood',
-    title: 'River Flood Illustration',
-    description: <>Slider-widget app created in <span className="font-bold">Google Earth Engine</span> illustrating Ural River flood that took place in 2024.</>,
-  },
-  {
-    imageUrl: '/images/eo-browser.png',
-    linkUrl: '#/eo-browser',
-    title: 'Wildfire Case Study',
-    description: <>Case study of wildfire area evaluation in Abai region, Kazakhstan using Custom <span className="font-bold">JavaScript</span> in <span className="font-bold">EO-Browser</span>.</>,
-  },
-  {
-    imageUrl: '/images/orbit.png',
-    linkUrl: 'https://orbit-explorer.streamlit.app/',
-    title: 'Orbit Explorer',
-    description: <>This web app created in <span className="font-bold">Streamlit</span> allows users to explore different types of satellite orbits and visualize their ground track.</>,
-  },
-  {
-    imageUrl: '/images/editor.png',
-    linkUrl: 'https://github.com/dastanNurbek',
-    title: 'Image Editor',
-    description: <>This application was created using <span className="font-bold">Flutter</span>. It uses <span className="font-bold">Look-Up-Tables</span> to create filters and <span className="font-bold">GLSL</span> fragment shaders to apply changes to images.</>,
-  },
-];
+// Preview card geometry, in px — kept here so the follow logic can do maths on it.
+const CARD_W = 224;
+const CARD_H = 258;
+const GAP = 28;
 
-const fadeIn = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.3 } },
+const Row = ({ project, number, delay, onEnter, onLeave }) => {
+  const content = (
+    <>
+      <span className="absolute inset-0 origin-left scale-x-0 bg-surface transition-transform duration-500 ease-n group-hover:scale-x-100" />
+
+      <span className="relative z-10 pt-1 font-mono text-2xs text-faint transition-colors duration-300 group-hover:text-accent">
+        {number}
+      </span>
+
+      <img
+        src={project.image}
+        alt=""
+        className="relative z-10 h-12 w-12 shrink-0 border border-line object-cover lg:hidden"
+      />
+
+      <span className="relative z-10 min-w-0 flex-1">
+        <span className="block text-lg font-light leading-snug tracking-tight text-fg transition-colors duration-300 group-hover:text-accent md:text-2xl">
+          {project.title}
+        </span>
+        <span className="mt-2 block max-w-[56ch] text-sm leading-relaxed text-muted">
+          {project.blurb}
+        </span>
+        <span className="mt-3 flex flex-wrap gap-x-3 gap-y-1 md:hidden">
+          {project.tags.map((t) => (
+            <span key={t} className="font-mono text-2xs uppercase tracking-label text-faint">
+              {t}
+            </span>
+          ))}
+        </span>
+      </span>
+
+      <span className="relative z-10 ml-auto hidden shrink-0 items-start gap-6 md:flex">
+        <span className="flex flex-col items-end gap-1">
+          {project.tags.map((t) => (
+            <span key={t} className="font-mono text-2xs uppercase tracking-label text-faint">
+              {t}
+            </span>
+          ))}
+        </span>
+        <span className="w-4 pt-0.5 text-right font-mono text-xs text-muted transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent">
+          {project.external ? '↗' : '→'}
+        </span>
+      </span>
+    </>
+  );
+
+  const className =
+    'group relative flex items-start gap-5 border-b border-line px-0 py-6 transition-[padding] duration-500 ease-n md:gap-8 md:hover:px-5';
+
+  return (
+    <motion.li
+      initial={{ opacity: 0, y: 14 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      onMouseEnter={() => onEnter(project)}
+      onMouseLeave={onLeave}
+      onFocus={() => onEnter(project)}
+      onBlur={onLeave}
+    >
+      {project.external ? (
+        <a href={project.href} target="_blank" rel="noopener noreferrer" className={className}>
+          {content}
+        </a>
+      ) : (
+        <Link to={project.href} className={className}>
+          {content}
+        </Link>
+      )}
+    </motion.li>
+  );
 };
 
 const Projects = () => {
-  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
+  const [visible, setVisible] = useState(INITIAL);
 
-  const showMore = () => setVisibleCount((c) => Math.min(c + INCREMENT, projects.length));
-  const hide = () => setVisibleCount(INITIAL_COUNT);
+  const cardRef = useRef(null);
+  const imgRef = useRef(null);
+  const noteRef = useRef(null);
+  const pointer = useRef({ x: 0, y: 0 });
+  const frame = useRef(0);
+  const shown = useRef(null);
 
-  const isExpanded = visibleCount > INITIAL_COUNT;
-  const canShowMore = visibleCount < projects.length;
+  // The card follows the pointer and swaps its own content through refs, so
+  // sweeping across the list never re-renders the rows.
+  const place = useCallback(() => {
+    frame.current = 0;
+    const card = cardRef.current;
+    if (!card) return;
+    const { x, y } = pointer.current;
+    const flip = x + GAP + CARD_W > window.innerWidth;
+    const left = flip ? x - GAP - CARD_W : x + GAP;
+    const top = Math.min(Math.max(y - CARD_H / 2, 8), window.innerHeight - CARD_H - 8);
+    card.style.transform = `translate3d(${left}px, ${top}px, 0)`;
+  }, []);
+
+  const track = useCallback(
+    (e) => {
+      pointer.current = { x: e.clientX, y: e.clientY };
+      if (!frame.current) frame.current = window.requestAnimationFrame(place);
+    },
+    [place]
+  );
+
+  const show = useCallback(
+    (project) => {
+      const card = cardRef.current;
+      if (!card || shown.current === project) return;
+      shown.current = project;
+      if (imgRef.current.getAttribute('src') !== project.image) imgRef.current.src = project.image;
+      noteRef.current.textContent = project.external ? 'External ↗' : 'Case study →';
+      place();
+      card.style.opacity = '1';
+    },
+    [place]
+  );
+
+  const hide = useCallback(() => {
+    shown.current = null;
+    if (cardRef.current) cardRef.current.style.opacity = '0';
+  }, []);
+
+  useEffect(
+    () => () => {
+      if (frame.current) window.cancelAnimationFrame(frame.current);
+    },
+    []
+  );
+
+  const remaining = projects.length - visible;
 
   return (
-    <div id="projects" className="max-w-[1200px] mx-auto w-full">
-      <h1 className="uppercase font-bold text-lg sm:text-xl tracking-wider px-10 pb-6">Projects</h1>
-      <div className="px-10 sm:px-20 mt-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.slice(0, visibleCount).map((project, index) => (
-            <motion.div
-              key={project.title}
-              className="justify-items-center"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ amount: 0.2 }}
-              variants={fadeIn}
-            >
-              <ImageCard imageUrl={project.imageUrl} linkUrl={project.linkUrl} />
-              <div className="flex justify-between py-4 w-60">
-                <h1 className="font-bold uppercase">{project.title}</h1>
-                <a className="text-right hover:text-gray-400" href={project.linkUrl}>
-                  Visit↗
-                </a>
-              </div>
-              <p className="w-60">{project.description}</p>
-            </motion.div>
+    <Section id="projects" index="04" label="Projects" tone="dark">
+      <div onMouseMove={track} onMouseLeave={hide} className="border-t border-line">
+        <ul>
+          {projects.slice(0, visible).map((p, i) => (
+            <Row
+              key={p.title + p.href}
+              project={p}
+              number={String(i + 1).padStart(2, '0')}
+              delay={Math.min(i, 6) * 0.04}
+              onEnter={show}
+              onLeave={hide}
+            />
           ))}
-        </div>
+        </ul>
 
-        <div className="flex justify-center gap-4 mt-10">
-          {canShowMore && (
+        <div className="flex flex-wrap items-center gap-x-8 gap-y-3 pt-8">
+          {remaining > 0 && (
             <button
-              onClick={showMore}
-              className="px-6 py-2 border border-current uppercase text-sm font-bold tracking-wider hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              type="button"
+              onClick={() => setVisible(projects.length)}
+              className="group flex items-center gap-3 font-mono text-2xs uppercase tracking-label text-fg transition-colors hover:text-accent"
             >
-              Show More
+              Load all
+              <span className="text-faint transition-colors group-hover:text-accent">
+                [{String(remaining).padStart(2, '0')}]
+              </span>
+              <span className="transition-transform duration-300 group-hover:translate-y-0.5">↓</span>
             </button>
           )}
-          {isExpanded && (
+          {visible > INITIAL && (
             <button
-              onClick={hide}
-              className="px-6 py-2 border border-current uppercase text-sm font-bold tracking-wider hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              type="button"
+              onClick={() => setVisible(INITIAL)}
+              className="font-mono text-2xs uppercase tracking-label text-muted transition-colors hover:text-accent"
             >
-              Hide
+              Collapse ↑
             </button>
           )}
+          <span className="ml-auto font-mono text-2xs uppercase tracking-label text-faint">
+            {String(Math.min(visible, projects.length)).padStart(2, '0')} /{' '}
+            {String(projects.length).padStart(2, '0')}
+          </span>
         </div>
       </div>
-    </div>
+
+      {/* Cursor-anchored preview, desktop only. Mounted once and driven by refs. */}
+      <div
+        ref={cardRef}
+        aria-hidden="true"
+        className="pointer-events-none fixed left-0 top-0 z-30 hidden w-56 border border-line bg-bg opacity-0 transition-opacity duration-200 will-change-transform lg:block"
+      >
+        <img ref={imgRef} src={projects[0].image} alt="" className="h-56 w-full object-cover" />
+        <p
+          ref={noteRef}
+          className="border-t border-line px-3 py-2 font-mono text-2xs uppercase tracking-label text-muted"
+        />
+      </div>
+    </Section>
   );
 };
 
