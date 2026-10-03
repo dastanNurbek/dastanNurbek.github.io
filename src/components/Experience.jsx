@@ -39,9 +39,6 @@ const Experience = () => (
               <span className="absolute left-0 top-[9px] h-1.5 w-1.5 -translate-x-[3.5px] bg-faint transition-colors duration-300 group-hover:bg-accent" />
 
               <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
-                <span className="font-mono text-2xs tracking-label text-faint">
-                  {String(roles.length - i).padStart(2, '0')}
-                </span>
                 <span className="font-mono text-2xs uppercase tracking-label text-muted transition-colors duration-300 group-hover:text-fg">
                   {r.period}
                 </span>

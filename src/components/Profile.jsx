@@ -94,7 +94,7 @@ const Profile = () => (
               <img
                 src="/images/avatartion-blue.png"
                 alt="Illustrated portrait of Dastan Nurbekuly"
-                className="w-full scale-110 grayscale contrast-125 transition-all duration-700 ease-n hover:grayscale-0"
+                className="w-full scale-110"
               />
             </div>
             <div className="flex items-center justify-between border-t border-line px-3 py-2 font-mono text-2xs uppercase tracking-label text-faint">

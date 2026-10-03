@@ -4,16 +4,28 @@ import Reveal from './ui/Reveal';
 
 const groups = [
   {
+    label: 'Programming',
+    items: ['Python', 'C#', 'C++', 'R', 'Java', 'MATLAB', 'SQL', 'JavaScript'],
+  },
+  {
+    label: 'ML & Cloud',
+    items: ['PyTorch', 'TensorFlow', 'PySpark', 'AWS'],
+  },
+  {
+    label: 'GIS',
+    items: ['ArcGIS', 'QGIS', 'SNAP', 'Google Earth Engine', 'eCognition'],
+  },
+  {
+    label: '3D',
+    items: ['Unity', 'Blender', 'SolidWorks'],
+  },
+  {
+    label: 'Software',
+    items: ['Git', 'Linux', 'Docker'],
+  },
+  {
     label: 'Languages',
-    items: ['Python', 'R', 'C#', 'Java', 'Dart', 'GAML'],
-  },
-  {
-    label: 'Frameworks',
-    items: ['PyTorch', 'TorchGeo', 'PySpark', 'MLlib', 'React', 'Flutter'],
-  },
-  {
-    label: 'Tools',
-    items: ['Unity', 'ArcGIS', 'QGIS', 'eCognition', 'SNAP', 'GAMA', 'Blender'],
+    items: ['English', 'Russian', 'Kazakh', 'German (A2)', 'French (A2)', 'Spanish (A1)'],
   },
 ];
 

@@ -23,6 +23,8 @@ const Row = ({ project, number, delay, onEnter, onLeave }) => {
       <img
         src={project.image}
         alt=""
+        loading="lazy"
+        decoding="async"
         className="relative z-10 h-12 w-12 shrink-0 border border-line object-cover lg:hidden"
       />
 
@@ -194,7 +196,13 @@ const Projects = () => {
         aria-hidden="true"
         className="pointer-events-none fixed left-0 top-0 z-30 hidden w-56 border border-line bg-bg opacity-0 transition-opacity duration-200 will-change-transform lg:block"
       >
-        <img ref={imgRef} src={projects[0].image} alt="" className="h-56 w-full object-cover" />
+        <img
+          ref={imgRef}
+          src={projects[0].image}
+          alt=""
+          decoding="async"
+          className="h-56 w-full object-cover"
+        />
         <p
           ref={noteRef}
           className="border-t border-line px-3 py-2 font-mono text-2xs uppercase tracking-label text-muted"
