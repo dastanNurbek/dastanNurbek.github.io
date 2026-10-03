@@ -10,6 +10,14 @@ const projects = [
     tags: ['Blender', 'Python'],
   },
   {
+    title: 'Synthetic-6000',
+    href: 'https://zenodo.org/records/23117919',
+    external: true,
+    image: '/images/cards/synthetic-6000.webp',
+    blurb: '6,000 procedurally generated pre- and post-fire scene pairs over rural France, with burned-area masks derived from simulated fire spread rather than manual annotation.',
+    tags: ['Dataset', 'Zenodo'],
+  },
+  {
     title: 'Synthetic Data',
     href: 'https://github.com/dastanNurbek/unity_augmentation',
     external: true,
