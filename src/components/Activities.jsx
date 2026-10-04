@@ -86,17 +86,17 @@ const Item = ({ item }) => (
       <span className="font-mono text-2xs uppercase tracking-label text-muted">{item.year}</span>
     </div>
 
-    <h4 className="mt-4 max-w-[34ch] text-lg font-light leading-tight tracking-tight text-fg md:text-2xl">
+    <h4 className="mt-5 max-w-[34ch] text-lg font-light leading-tight tracking-tight text-fg md:text-2xl">
       {item.title}
     </h4>
-    <p className="mt-2 font-mono text-2xs uppercase tracking-label text-faint">{item.org}</p>
+    <p className="mt-3 font-mono text-2xs uppercase tracking-label text-faint">{item.org}</p>
 
     {item.summary && (
       <p className="mt-5 max-w-read leading-relaxed text-soft">{item.summary}</p>
     )}
 
     {item.details && (
-      <div className="mt-6">
+      <div className="mt-8">
         <Disclosure label="Details">
           <div className="max-w-read space-y-4 leading-relaxed text-soft">
             {item.details.map((d, i) => (
@@ -114,11 +114,7 @@ const Activities = () => (
     <div className="space-y-16">
       {groups.map((g, gi) => (
         <div key={g.label}>
-          <div className="flex items-center gap-4">
-            <h3 className="font-mono text-2xs uppercase tracking-label text-accent">{g.label}</h3>
-            <span className="h-px flex-1 bg-line" />
-            <span className="font-mono text-2xs text-faint">{String(g.items.length).padStart(2, '0')}</span>
-          </div>
+          <h3 className="font-mono text-2xs uppercase tracking-label text-accent">{g.label}</h3>
 
           <div className="mt-6">
             {g.items.map((item, i) => (

@@ -34,7 +34,7 @@ const Skills = () => (
     <div>
       {groups.map((g, i) => (
         <Reveal key={g.label} delay={i * 0.06}>
-          <div className="grid grid-cols-1 gap-x-10 gap-y-4 border-t border-line py-8 md:grid-cols-[9rem_1fr]">
+          <div className="grid grid-cols-1 gap-x-10 gap-y-4 border-t border-line py-8 md:grid-cols-[9rem_1fr] md:items-center">
             <div className="flex items-baseline gap-3">
               <span className="font-mono text-2xs text-accent">{String(i + 1).padStart(2, '0')}</span>
               <h3 className="font-mono text-2xs uppercase tracking-label text-muted">{g.label}</h3>

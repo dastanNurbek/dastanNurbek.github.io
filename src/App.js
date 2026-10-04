@@ -40,8 +40,8 @@ function Home() {
       <Nav />
       <main>
         <Profile />
-        <Background />
         <Experience />
+        <Background />
         <Projects />
         <Skills />
         <Publications />

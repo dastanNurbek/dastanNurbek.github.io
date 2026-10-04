@@ -50,13 +50,13 @@ const Profile = () => (
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="mt-10 font-mono text-xs uppercase tracking-label text-muted">
+            <p className="mt-10 font-mono text-2xs uppercase tracking-label text-muted">
               <Role />
             </p>
 
-            <p className="mt-6 max-w-[46ch] text-base font-light leading-relaxed text-soft md:text-lg">
-              I build things that turn satellite data into something you can look at, question and use —
-              models, simulations and the occasional game engine.
+            <p className="mt-5 max-w-[46ch] text-base font-light leading-relaxed text-soft md:text-lg">
+              Machine learning engineer in Earth observation, with hands-on experience in synthetic data
+              generation, distributed deep learning and multi-modal remote sensing.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-3">

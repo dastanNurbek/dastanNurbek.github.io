@@ -2,8 +2,8 @@
 // all read from here, so numbering can never drift apart.
 const sections = [
   { id: 'profile', index: '01', label: 'Profile' },
-  { id: 'background', index: '02', label: 'Background' },
-  { id: 'experience', index: '03', label: 'Experience' },
+  { id: 'experience', index: '02', label: 'Experience' },
+  { id: 'background', index: '03', label: 'Background' },
   { id: 'projects', index: '04', label: 'Projects' },
   { id: 'skills', index: '05', label: 'Skills' },
   { id: 'publications', index: '06', label: 'Publications' },

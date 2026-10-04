@@ -32,10 +32,10 @@ const Row = ({ project, number, delay, onEnter, onLeave }) => {
         <span className="block text-lg font-light leading-snug tracking-tight text-fg transition-colors duration-300 group-hover:text-accent md:text-2xl">
           {project.title}
         </span>
-        <span className="mt-2 block max-w-[56ch] text-sm leading-relaxed text-muted">
+        <span className="mt-3 block max-w-[56ch] leading-relaxed text-muted">
           {project.blurb}
         </span>
-        <span className="mt-3 flex flex-wrap gap-x-3 gap-y-1 md:hidden">
+        <span className="mt-4 flex flex-wrap gap-x-3 gap-y-1 md:hidden">
           {project.tags.map((t) => (
             <span key={t} className="font-mono text-2xs uppercase tracking-label text-faint">
               {t}

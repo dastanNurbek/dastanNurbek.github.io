@@ -26,19 +26,19 @@ const projects = [
     tags: ['Unity', 'Deep Learning'],
   },
   {
+    title: 'CampusMap',
+    href: '/campusmap',
+    image: '/images/cards/campus-map.webp',
+    blurb: '3D digital twin built to explore Z_GIS and interact with real-time campus data.',
+    tags: ['Unity', 'ArcGIS SDK'],
+  },
+  {
     title: 'Copurrnicus Game',
     href: 'https://play.unity.com/en/games/6e97a30f-d1dc-494d-a115-77d721f6445c/copernicus',
     external: true,
     image: '/images/cards/copernicus-laptop.webp',
     blurb: "Educational game promoting the EU's Copernicus programme and its services.",
     tags: ['Unity', 'Game'],
-  },
-  {
-    title: 'CampusMap',
-    href: '/campusmap',
-    image: '/images/cards/campus-map.webp',
-    blurb: '3D digital twin built to explore Z_GIS and interact with real-time campus data.',
-    tags: ['Unity', 'ArcGIS SDK'],
   },
   {
     title: 'AI for Agriculture',
