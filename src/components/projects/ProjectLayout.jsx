@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import DotMatrix from '../ui/DotMatrix';
 import Reveal from '../ui/Reveal';
+import ScrollTopButton from '../ui/ScrollTopButton';
 
 // A case study is one centred sheet: chrome, header and prose share this column.
 const COLUMN = 'mx-auto w-full max-w-[880px] px-6 md:px-10';
@@ -13,6 +14,7 @@ const COLUMN = 'mx-auto w-full max-w-[880px] px-6 md:px-10';
 const ProjectLayout = ({ eyebrow = 'Case study', title, subtitle, meta = [], links = [], children }) => {
   return (
     <div className="panel panel-light min-h-screen">
+      <ScrollTopButton />
       <header className="panel panel-dark fixed inset-x-0 top-0 z-50 border-b border-line nav-blur">
         <div className={`${COLUMN} flex h-14 items-center justify-between`}>
           <Link
@@ -30,7 +32,7 @@ const ProjectLayout = ({ eyebrow = 'Case study', title, subtitle, meta = [], lin
       </header>
 
       <div className={`${COLUMN} pt-16`}>
-        <div className="border-b border-line py-10 md:py-16">
+        <div className="border-b border-line pb-6 pt-10 md:pb-8 md:pt-16">
           <Reveal>
             <p className="font-mono text-2xs uppercase tracking-label text-accent">{eyebrow}</p>
             <h1 className="mt-6 max-w-[26ch] text-3xl font-light leading-[1.1] tracking-tight text-fg md:text-5xl">
@@ -72,7 +74,7 @@ const ProjectLayout = ({ eyebrow = 'Case study', title, subtitle, meta = [], lin
           )}
         </div>
 
-        <article className="prose-n py-12 md:py-16">{children}</article>
+        <article className="prose-n pb-12 pt-8 md:pb-16 md:pt-10">{children}</article>
       </div>
 
       <div className="border-t border-line">

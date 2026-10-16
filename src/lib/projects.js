@@ -2,6 +2,13 @@
 // Card art is served from /images/cards: 600px WebP, a few tens of KB each.
 const projects = [
   {
+    title: 'Frames to Splats',
+    href: '/frames-to-splats',
+    image: '/images/cards/frames-to-splats.webp',
+    blurb: 'Seven notebooks from a short video of a pumpkin to a Gaussian Splatting scene in Blender and Unity, with GLOMAP for the cameras and gsplat for training.',
+    tags: ['gsplat', 'GLOMAP'],
+  },
+  {
     title: 'WorldWeaver Fire',
     href: 'https://github.com/dastanNurbek/worldweaver-fire',
     external: true,

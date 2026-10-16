@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import { HashRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import { scrollTo, startSmoothScroll } from "./lib/smoothScroll";
 import Nav from "./components/Nav";
@@ -19,6 +19,10 @@ import DengueCompetition from "./components/projects/DengueCompetition";
 import AircraftDetection from "./components/projects/AircraftDetection";
 import BigDataDL from "./components/projects/BigDataDL";
 import BigDataML from "./components/projects/BigDataML";
+
+// The notebook series pulls in markdown, KaTeX and highlight.js; load it only when visited.
+const SeriesIndex = lazy(() => import("./components/blog/SeriesIndex"));
+const NotebookPost = lazy(() => import("./components/blog/NotebookPost"));
 
 // A hash route change keeps the old scroll position, so reset it by hand.
 function ScrollToTop() {
@@ -67,6 +71,8 @@ function App() {
         <Route path="/aircraft-detection" element={<AircraftDetection />} />
         <Route path="/big-data-dl" element={<BigDataDL />} />
         <Route path="/big-data-ml" element={<BigDataML />} />
+        <Route path="/frames-to-splats" element={<Suspense fallback={null}><SeriesIndex /></Suspense>} />
+        <Route path="/frames-to-splats/:slug" element={<Suspense fallback={null}><NotebookPost /></Suspense>} />
         <Route path="/" element={<Home />} />
       </Routes>
     </Router>

@@ -227,6 +227,68 @@
         @apply mt-3 font-mono text-2xs uppercase tracking-label text-muted;
     }
 
+    /* Notebook posts: code cells, their outputs and figures */
+    .prose-n .nb-table th,
+    .prose-n .nb-table td {
+        @apply pr-6 align-top;
+    }
+    .prose-n pre.nb-code {
+        @apply mb-2 text-fg;
+    }
+    .prose-n pre.nb-output {
+        @apply mb-6 border-0 border-l-2 border-line bg-transparent py-2 pl-5 pr-0 text-[12px] text-muted;
+    }
+    .prose-n img.nb-image {
+        @apply mb-6 h-auto;
+    }
+    .prose-n .nb-video,
+    .prose-n .nb-figure {
+        @apply mb-6 w-full border border-line;
+    }
+    .prose-n .katex-display {
+        @apply my-6 overflow-x-auto overflow-y-hidden py-1;
+    }
+    .prose-n .hljs-keyword,
+    .prose-n .hljs-built_in,
+    .prose-n .hljs-literal {
+        @apply text-accent;
+    }
+    .prose-n .hljs-string,
+    .prose-n .hljs-number {
+        color: #b4530b;
+    }
+    .prose-n .hljs-comment {
+        @apply italic text-faint;
+    }
+    .prose-n .hljs-title,
+    .prose-n .hljs-params {
+        @apply text-fg;
+    }
+
+    /* Same shape as the header link buttons in ProjectLayout */
+    .prose-n a.nb-pager {
+        @apply inline-flex items-center gap-3 border border-line px-4 py-2.5 font-mono text-2xs uppercase tracking-label text-fg no-underline transition-colors duration-300 hover:border-accent hover:text-accent;
+    }
+
+    .prose-n ol.nb-parts {
+        @apply mb-12 list-none space-y-0 border-t border-line pl-0;
+    }
+    .prose-n a.nb-part {
+        @apply flex items-start gap-6 border-b border-line py-5 text-fg no-underline transition-colors hover:text-accent;
+    }
+    .nb-part-number {
+        @apply pt-1 font-mono text-2xs text-faint;
+    }
+    .nb-part-title {
+        @apply block text-lg font-light tracking-tight md:text-xl;
+    }
+    .nb-part-summary {
+        @apply mt-1 block text-sm leading-relaxed text-muted;
+    }
+    .nb-part-arrow {
+        @apply ml-auto pt-1 font-mono text-xs text-muted;
+    }
+
     /* Translucent bar that sits over scrolling content */
     .nav-blur {
         background: var(--n-bg-blur);

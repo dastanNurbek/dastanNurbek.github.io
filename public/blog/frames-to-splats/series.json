@@ -1,0 +1,51 @@
+{
+ "slug": "frames-to-splats",
+ "title": "From Frames to Gaussian Splats",
+ "repoUrl": "https://github.com/dastanNurbek/frames-to-splats",
+ "intro": "I filmed a pumpkin on a wooden table with a Canon EOS 600D and wanted to see how far I could get with open Python libraries: from the raw frames to a Gaussian Splatting scene that opens in Blender and Unity. These notebooks are the record of that experiment. They show the code I ran, the outputs I got, and the things that didn't work along the way.\n\nMost 3DGS projects hand you a single training script. Here I split the process into its steps so I could look at the intermediate results: which frames are worth keeping, how many matches survive, where GLOMAP places the cameras, what the Gaussians look like before and after training. The settings are the ones that worked for this scene. Treat them as a starting point, not a recipe.",
+ "details": "## Environment\n\n```bash\nconda env create -f environment.yml\nconda activate splat-tutorial\npython -m ipykernel install --user --name splat-tutorial --display-name \"Python (splat-tutorial)\"\njupyter lab\n```\n\nThe versions are pinned because of gsplat. It ships CUDA code, and building that yourself needs a matching CUDA toolkit. The gsplat releases include prebuilt wheels, and the newest set is for Python 3.10, PyTorch 2.4 and CUDA 12.4. With those pins, the NVIDIA driver is all you need (version 550 or newer); the CUDA toolkit doesn't have to be installed.\n\nI ran everything on Linux. gsplat and pycolmap also publish Windows wheels for the same versions, so Windows should work if you replace the gsplat wheel URL in `environment.yml` with the `win_amd64` one from the [v1.5.3 release](https://github.com/nerfstudio-project/gsplat/releases/tag/v1.5.3). I haven't tried it.\n\n## Data\n\nThe input is a folder of frames in `frames/`. Mine are 814 JPGs at 1920×1080, extracted from a 34-second video; I use the first 580, before the camera goes down to table level. They're attached to the [latest release](https://github.com/dastanNurbek/frames-to-splats/releases/latest) as `frames.zip`:\n\n```bash\nwget https://github.com/dastanNurbek/frames-to-splats/releases/latest/download/frames.zip\nunzip frames.zip        # creates frames/\n```\n\nNothing in `frames/` is modified. Everything the notebooks produce goes into `work/` and `export/`, so either folder can be deleted and rebuilt:\n\n```\nframes/            input frames\nwork/\n  images/          selected frames               (01)\n  database.db      features and matches          (02)\n  sparse/0/        GLOMAP reconstruction         (03)\n  dataset/         undistorted images + cameras  (04)\n  splats/          checkpoints and trained .ply  (06)\nexport/            .ply files for Blender/Unity  (07)\n```\n\n## Opening the result\n\nBlender 5.3 imports Gaussian splats natively. In Unity I used [aras-p/UnityGaussianSplatting](https://github.com/aras-p/UnityGaussianSplatting); on Linux it needs the Vulkan graphics API. [SuperSplat](https://superspl.at/editor) is useful for removing leftover floaters by hand.",
+ "posts": [
+  {
+   "number": "01",
+   "slug": "01-frames",
+   "title": "Selecting frames",
+   "summary": "Measure sharpness, brightness and camera motion, then pick a subset of frames"
+  },
+  {
+   "number": "02",
+   "slug": "02-features-matching",
+   "title": "Features & matching",
+   "summary": "SIFT features and matching between frames"
+  },
+  {
+   "number": "03",
+   "slug": "03-glomap-sfm",
+   "title": "GLOMAP",
+   "summary": "Global Structure-from-Motion: camera poses and a sparse point cloud"
+  },
+  {
+   "number": "04",
+   "slug": "04-undistort",
+   "title": "Undistort",
+   "summary": "Remove lens distortion and write a dataset in the layout trainers expect"
+  },
+  {
+   "number": "05",
+   "slug": "05-gaussians-explained",
+   "title": "Gaussians, up close",
+   "summary": "Take a single Gaussian apart, then train a small model on a few views"
+  },
+  {
+   "number": "06",
+   "slug": "06-train",
+   "title": "Training",
+   "summary": "Full training with densification, SSIM, spherical harmonics and exposure correction"
+  },
+  {
+   "number": "07",
+   "slug": "07-clean-export",
+   "title": "Clean & export",
+   "summary": "Find \"up\", remove floaters, export for Blender and Unity"
+  }
+ ]
+}
